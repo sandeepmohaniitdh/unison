@@ -11,8 +11,11 @@ Unison is an LMS for one institute, built around group assignments. Administrato
 
 | What | Where |
 |---|---|
-| Design document (MS-1) | Submitted to the instructor; a copy will be added under `docs/` |
-| Figma prototype (MS-2) | https://www.figma.com/design/HyKek9301fGwxNf429wi8m |
+| Design document (MS-1) | [docs/Unison_MS1_Design_Document.pdf](docs/Unison_MS1_Design_Document.pdf) |
+| ER diagram and data model (MS-2) | [docs/Unison_ER_Diagram.pdf](docs/Unison_ER_Diagram.pdf) |
+| ER diagram, single page (MS-2) | [docs/Unison_ER_Diagram_Full.pdf](docs/Unison_ER_Diagram_Full.pdf) |
+| Figma prototype (MS-2) | [Open the prototype](https://www.figma.com/proto/om1QUA9cFgcnGmX6WvVcMx/new_unison--Copy-?node-id=2-2&p=f&t=fg6lFnAHWouVsMsE-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2%3A2&show-proto-sidebar=1) |
+| Prototype walkthrough video (MS-2) | [Watch on Google Drive](https://drive.google.com/file/d/139FEv3z5U7PNt7YEiOYTNQquafv_i0h-/view?usp=sharing) |
 
 ## Main features
 
