@@ -1,0 +1,6 @@
+# Same line endings on Windows, macOS and Linux (scripts and SQL break with CRLF).
+* text=auto eol=lf
+*.pdf binary
+*.png binary
+*.jpg binary
+*.zip binary
