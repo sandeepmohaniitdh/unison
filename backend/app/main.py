@@ -1,4 +1,4 @@
-"""The FastAPI application. Each module adds its router under /api/v1."""
+"""The FastAPI application: every module's router under /api/v1."""
 
 import logging
 
@@ -10,6 +10,18 @@ from app.config import get_settings
 from app.core.deps import DB
 from app.core.errors import ErrorBody, install_error_handlers
 from app.core.openapi import errors
+from app.modules.admin.router import router as admin_router
+from app.modules.ai.router import router as ai_router
+from app.modules.assignments.router import router as assignments_router
+from app.modules.auth.router import router as auth_router
+from app.modules.courses.router import router as courses_router
+from app.modules.invitations.router import router as invitations_router
+from app.modules.notifications.router import router as notifications_router
+from app.modules.resources.router import router as resources_router
+from app.modules.reviews.router import router as reviews_router
+from app.modules.submissions.router import router as submissions_router
+from app.modules.teams.router import router as teams_router
+from app.modules.users.router import router as users_router
 
 VERSION = "1.0.0"
 
@@ -93,6 +105,21 @@ def create_app() -> FastAPI:
             database = "unavailable"
         return {"status": "ok", "database": database, "version": VERSION}
 
+    for router in (
+        auth_router,
+        users_router,
+        courses_router,
+        invitations_router,
+        resources_router,
+        assignments_router,
+        teams_router,
+        submissions_router,
+        reviews_router,
+        ai_router,
+        notifications_router,
+        admin_router,
+    ):
+        api.include_router(router)
     app.include_router(api)
 
     if settings.auth_mode == "demo":

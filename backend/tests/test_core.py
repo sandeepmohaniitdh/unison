@@ -1,4 +1,4 @@
-"""Health check, error format, time handling, file checks and API conventions."""
+"""Health check, error format, pagination, time handling and file checks."""
 
 import io
 from datetime import datetime
@@ -8,8 +8,8 @@ import pytest
 from app.core.errors import AppError
 from app.core.storage import LocalStorage
 from app.core.time import IST, to_ist, to_utc
-
-PDF_BYTES = b"%PDF-1.4\n1 0 obj<</Type/Catalog>>endobj\ntrailer<</Root 1 0 R>>\n%%EOF\n"
+from tests.conftest import as_user
+from tests.factories import PDF_BYTES, make_user
 
 
 def test_health(client):
@@ -23,6 +23,39 @@ def test_unknown_route_uses_standard_error_body(client):
     r = client.get("/api/v1/nope", headers={"X-Request-ID": "abc123"})
     assert r.status_code == 404
     assert r.json() == {"error": {"code": "NOT_FOUND", "message": "Not Found", "details": None, "request_id": "abc123"}}
+
+
+def test_validation_error_lists_fields(client):
+    r = client.post("/api/v1/auth/login", json={"email": "not-an-email"})
+    assert r.status_code == 422
+    body = r.json()["error"]
+    assert body["code"] == "VALIDATION_ERROR"
+    fields = {d["field"] for d in body["details"]}
+    assert {"email", "password"} <= fields
+
+
+def test_protected_route_needs_login(client):
+    r = client.get("/api/v1/users/me")
+    assert r.status_code == 401
+    assert r.json()["error"]["code"] == "NOT_AUTHENTICATED"
+
+
+def test_demo_header_with_unknown_email(client):
+    r = client.get("/api/v1/users/me", headers=as_user("nobody@example.com"))
+    assert r.status_code == 401
+    assert r.json()["error"]["code"] == "DEMO_USER_UNKNOWN"
+
+
+def test_pagination_shape_and_limits(client, db):
+    admin = make_user(db, "admin")
+    for i in range(3):
+        make_user(db, "student", name=f"Paged Person {i}")
+    r = client.get("/api/v1/admin/users?q=Paged&page=1&size=2", headers=as_user(admin))
+    assert r.status_code == 200
+    body = r.json()
+    assert (body["page"], body["size"], body["total"], len(body["items"])) == (1, 2, 3, 2)
+    assert client.get("/api/v1/admin/users?size=101", headers=as_user(admin)).status_code == 422
+    assert client.get("/api/v1/admin/users?page=0", headers=as_user(admin)).status_code == 422
 
 
 def test_time_conversion_ist():
@@ -57,7 +90,21 @@ def test_storage_checks_extension_signature_and_size(tmp_path):
 def test_openapi_has_every_module(client):
     spec = client.get("/api/v1/openapi.json").json()
     tags = {tag for path in spec["paths"].values() for op in path.values() for tag in op.get("tags", [])}
-    assert "health" in tags
+    assert {
+        "auth",
+        "users",
+        "courses",
+        "invitations",
+        "resources",
+        "assignments",
+        "teams",
+        "submissions",
+        "reviews",
+        "ai",
+        "notifications",
+        "admin",
+        "health",
+    } <= tags
     # Every error response of every operation uses the standard error body.
     for path, ops in spec["paths"].items():
         for method, op in ops.items():

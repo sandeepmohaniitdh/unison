@@ -7,7 +7,8 @@ back at the end, so tests never see each other's data. The services' own
 commits become savepoints inside that transaction.
 
 Replaced for tests: the clock (frozen, so tests can jump past deadlines),
-and file storage (a temporary folder).
+file storage (a temporary folder), the login delay (no waiting) and the
+current user (the X-Demo-User header, see `as_user`).
 """
 
 import os
@@ -34,6 +35,7 @@ from app.core.storage import LocalStorage  # noqa: E402
 from app.core.time import FrozenClock  # noqa: E402
 from app.db import Base, make_engine  # noqa: E402
 from app.main import create_app  # noqa: E402
+from app.modules.auth.router import get_sleeper  # noqa: E402
 
 START = datetime(2026, 11, 2, 4, 30)  # 10:00 IST on Monday 2 November 2026
 
@@ -79,14 +81,26 @@ def storage():
 
 
 @pytest.fixture
-def app(db, clock, storage):
+def sleeps():
+    return []
+
+
+@pytest.fixture
+def app(db, clock, storage, sleeps):
     application = create_app()
     application.dependency_overrides[get_db] = lambda: db
     application.dependency_overrides[get_clock] = lambda: clock
     application.dependency_overrides[get_storage] = lambda: storage
+    application.dependency_overrides[get_sleeper] = lambda: sleeps.append
     return application
 
 
 @pytest.fixture
 def client(app):
     return TestClient(app)
+
+
+def as_user(user_or_email) -> dict:
+    """Headers that make a request come from this user (demo mode)."""
+    email = user_or_email if isinstance(user_or_email, str) else user_or_email.email
+    return {"X-Demo-User": email}
