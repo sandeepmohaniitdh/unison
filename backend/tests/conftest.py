@@ -28,6 +28,7 @@ os.environ["SEED_ON_START"] = "false"
 from fastapi.testclient import TestClient  # noqa: E402
 from sqlalchemy.orm import Session  # noqa: E402
 
+from app import models  # noqa: E402, F401
 from app.core.deps import get_clock, get_db, get_storage  # noqa: E402
 from app.core.storage import LocalStorage  # noqa: E402
 from app.core.time import FrozenClock  # noqa: E402
