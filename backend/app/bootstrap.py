@@ -1,9 +1,12 @@
 """The `init` service: `python -m app.bootstrap`.
 
-Runs once on every `docker compose up`, before the backend starts:
+Runs once on every `docker compose up`, before the backend and worker start:
 1. waits for MySQL,
 2. applies the Alembic migrations,
-3. loads the seed data, if SEED_ON_START is true (the seed skips itself if data is there).
+3. adds default platform settings,
+4. creates the first administrator from ADMIN_EMAIL and ADMIN_PASSWORD
+   (who must change the password at first login),
+5. loads the seed data, if SEED_ON_START is true (the seed skips itself if data is there).
 """
 
 import logging
@@ -11,12 +14,16 @@ import time
 from pathlib import Path
 
 from alembic.config import Config
-from sqlalchemy import text
+from sqlalchemy import select, text
 
 from alembic import command
 from app.config import get_settings
 from app.core.storage import LocalStorage
+from app.core.time import utcnow
 from app.db import get_engine, get_session_factory
+from app.modules.admin.service import audit, ensure_default_settings
+from app.modules.users import service as users
+from app.modules.users.models import User
 
 log = logging.getLogger("unison.init")
 BACKEND_DIR = Path(__file__).resolve().parent.parent
@@ -42,6 +49,33 @@ def migrate() -> None:
     command.upgrade(config, "head")
 
 
+def ensure_first_admin() -> bool:
+    settings = get_settings()
+    db = get_session_factory()()
+    try:
+        ensure_default_settings(db)
+        if db.scalar(select(User.id).where(User.role == "admin")) is not None:
+            db.commit()
+            return False
+        now = utcnow()
+        admin = users.create_user(
+            db,
+            name=settings.admin_name,
+            email=settings.admin_email,
+            role="admin",
+            password=settings.admin_password,
+            now=now,
+            verified=True,
+            must_change_password=True,
+        )
+        audit(db, admin, "first_admin_created", "users", admin.id, after={"email": settings.admin_email})
+        db.commit()
+        log.info("Created the first administrator %s (must change the password at first login)", settings.admin_email)
+        return True
+    finally:
+        db.close()
+
+
 def seed_if_empty() -> None:
     from app.seed.run import seed
 
@@ -60,6 +94,7 @@ def main() -> None:
     wait_for_database()
     migrate()
     logging.getLogger().setLevel(logging.INFO)  # Alembic's logging setup lowers it
+    ensure_first_admin()
     seed_if_empty()
     log.info("Init finished.")
 

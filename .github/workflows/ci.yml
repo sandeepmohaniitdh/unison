@@ -85,14 +85,16 @@ jobs:
           done
           echo "The backend did not become healthy in 5 minutes"
           exit 1
-      - name: The API answers
+      - name: The API, the seed data and Mailpit answer
         run: |
           curl --fail --silent http://localhost:8000/api/v1/health
+          curl --fail --silent "http://localhost:8000/api/v1/courses?q=CS301&size=1" | grep -q CS301
+          curl --fail --silent --output /dev/null http://localhost:8025
       - name: Show service status and logs
         if: always()
         run: |
           docker compose ps --all
-          docker compose logs --no-color init backend
+          docker compose logs --no-color init backend worker
       - name: Stop
         if: always()
         run: docker compose down --volumes
