@@ -2,7 +2,8 @@
 
 Runs once on every `docker compose up`, before the backend starts:
 1. waits for MySQL,
-2. applies the Alembic migrations.
+2. applies the Alembic migrations,
+3. loads the seed data, if SEED_ON_START is true (the seed skips itself if data is there).
 """
 
 import logging
@@ -13,7 +14,9 @@ from alembic.config import Config
 from sqlalchemy import text
 
 from alembic import command
-from app.db import get_engine
+from app.config import get_settings
+from app.core.storage import LocalStorage
+from app.db import get_engine, get_session_factory
 
 log = logging.getLogger("unison.init")
 BACKEND_DIR = Path(__file__).resolve().parent.parent
@@ -39,11 +42,25 @@ def migrate() -> None:
     command.upgrade(config, "head")
 
 
+def seed_if_empty() -> None:
+    from app.seed.run import seed
+
+    settings = get_settings()
+    if not settings.seed_on_start:
+        return
+    db = get_session_factory()()
+    try:
+        seed(db, LocalStorage(settings.upload_dir))
+    finally:
+        db.close()
+
+
 def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
     wait_for_database()
     migrate()
     logging.getLogger().setLevel(logging.INFO)  # Alembic's logging setup lowers it
+    seed_if_empty()
     log.info("Init finished.")
 
 
