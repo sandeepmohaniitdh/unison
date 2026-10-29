@@ -43,6 +43,15 @@ jobs:
           ruff check .
           ruff format --check .
 
+      - name: Migrations apply, roll back and apply again
+        run: |
+          alembic upgrade head
+          alembic downgrade base
+          alembic upgrade head
+
+      - name: Models match the migrations
+        run: alembic check
+
       - name: Tests with coverage
         run: pytest --cov=app --cov-report=term --cov-report=xml --cov-report=html
 
@@ -83,7 +92,7 @@ jobs:
         if: always()
         run: |
           docker compose ps --all
-          docker compose logs --no-color backend
+          docker compose logs --no-color init backend
       - name: Stop
         if: always()
         run: docker compose down --volumes
