@@ -1,0 +1,110 @@
+/*
+ * Design tokens taken from the Figma file "Unison – MS-2 Prototype"
+ * (exact values from claude/unison_figma_screens.html). Use these variables instead of
+ * raw colours so every page matches the design. Theme based on IIT Dharwad portals.
+ */
+:root {
+  /* Brand and text */
+  --color-primary: #742e86;
+  --color-eyebrow: #862a8c;
+  --color-accent: #e58e26;
+  --color-accent-light: #f6b35c; /* ticks on the purple sign-in panel */
+  --color-red: #d2454b;
+  --color-text: #221a26;
+  --color-text-nav: #3a3040;
+  --color-muted: #7a6e80;
+  --color-placeholder: #9a8fa0;
+
+  /* Surfaces */
+  --color-canvas: #f8f2f8; /* page background */
+  --color-surface: #ffffff;
+  --color-surface-tint: #fcf8fd; /* highlighted cards, upload zone */
+  --color-tint: #f3e9f3; /* active nav, avatars, soft buttons */
+
+  /* Lines */
+  --color-border: #eadfec;
+  --color-border-strong: #dcc3e1; /* active nav, secondary buttons, upload zone */
+  --color-divider: #f0e6f1; /* sidebar dividers */
+  --color-row-divider: #f3ecf4; /* table rows, lists */
+  --color-input-border: #e0d3e3;
+  --color-danger-border: #f1c4c6;
+  --color-ai-border: #e3cde8;
+  --color-toggle-off: #d9cfdb;
+  --color-checkbox-off: #c9b8cd;
+
+  /* Badges: background / text */
+  --badge-purple-bg: #f3e9f3;
+  --badge-purple-fg: #742e86;
+  --badge-green-bg: #e6f4ea;
+  --badge-green-fg: #1e7b3a;
+  --badge-amber-bg: #fff3dc;
+  --badge-amber-fg: #9a5b00;
+  --badge-red-bg: #fce8e9;
+  --badge-red-fg: #b4343a;
+  --badge-grey-bg: #f1eef2;
+  --badge-grey-fg: #5d5363;
+
+  /* Shape */
+  --radius-card: 16px;
+  --radius-drop: 14px;
+  --radius-nav: 12px;
+  --radius-control: 10px;
+  --radius-small: 8px;
+  --radius-pill: 20px;
+  --shadow-card: 0 2px 10px rgba(116, 46, 134, 0.05);
+
+  /* Type */
+  --font-sans: Inter, Arial, Helvetica, sans-serif;
+  --font-size-base: 14px;
+  --line-height-base: 1.45;
+
+  /* Chart colours (admin "Users by role"), checked for colour-blind separation */
+  --chart-1: #742e86;
+  --chart-2: #e58e26;
+  --chart-3: #1baf7a;
+
+  /* Layout */
+  --sidebar-width: 264px;
+  --header-height: 76px;
+}
+
+/* Dark mode ("Dark mode" in the sidebar). The Figma screens are light; dark keeps the same
+   layout and swaps these colours only. */
+:root[data-theme='dark'] {
+  --color-primary: #c89bd6;
+  --color-primary-strong: #742e86;
+  --color-eyebrow: #d3a6dd;
+  --color-text: #f1eaf3;
+  --color-text-nav: #ddd2e0;
+  --color-muted: #a99db0;
+  --color-placeholder: #8c8092;
+  --color-canvas: #17121a;
+  --color-surface: #221b26;
+  --color-surface-tint: #2a2130;
+  --color-tint: #33263a;
+  --color-border: #3a2f40;
+  --color-border-strong: #5a4563;
+  --color-divider: #33293a;
+  --color-row-divider: #2f2635;
+  --color-input-border: #44384b;
+  --color-danger-border: #6b3438;
+  --color-ai-border: #4a3852;
+  --color-toggle-off: #4a4050;
+  --color-checkbox-off: #5c5062;
+  --badge-purple-bg: #3a2a42;
+  --badge-purple-fg: #dcb6e6;
+  --badge-green-bg: #1d3826;
+  --badge-green-fg: #8fd6a4;
+  --badge-amber-bg: #3d2f14;
+  --badge-amber-fg: #f1c072;
+  --badge-red-bg: #45222a;
+  --badge-red-fg: #f2a3a8;
+  --badge-grey-bg: #2f2934;
+  --badge-grey-fg: #c3b9c8;
+  --ai-gradient-top: #2b2131;
+  --shadow-card: 0 2px 10px rgba(0, 0, 0, 0.25);
+  --chart-1: #a865c0;
+  --chart-2: #c97316;
+  --chart-3: #199e70;
+  color-scheme: dark;
+}
