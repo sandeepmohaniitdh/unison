@@ -17,8 +17,8 @@ router = APIRouter(prefix="/admin", tags=["admin"])
 
 
 @router.get("/stats", response_model=Stats, summary="Get platform statistics", responses=errors(401, 403))
-def get_stats(db: DB, _admin: AdminUser):
-    return service.stats(db)
+def get_stats(db: DB, clock: ClockDep, _admin: AdminUser):
+    return service.stats(db, clock.now())
 
 
 @router.get("/users", response_model=Page[UserRow], summary="Search users", responses=errors(401, 403))

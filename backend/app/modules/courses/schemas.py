@@ -59,6 +59,8 @@ class CourseSummary(BaseModel):
     join_requests_open: bool
     archived: bool
     my_status: MyStatus = Field(description="'none' when not logged in or not a member.")
+    assignment_count: int = Field(description="Published assignments.")
+    resource_count: int = Field(description="Published resources.")
 
 
 class AssignmentTitle(BaseModel):
@@ -68,8 +70,16 @@ class AssignmentTitle(BaseModel):
     due_at: IstDateTime
 
 
+class MyEnrolment(BaseModel):
+    role: Literal["student", "teacher"]
+    joined_at: IstDateTime
+    via: Literal["invitation", "join_request", "added"]
+    decided_by: UserBrief | None
+
+
 class CourseDetail(CourseSummary):
     description: str | None
+    my_enrolment: MyEnrolment | None = Field(description="Your own active membership, if any.")
     student_count: int
     assignments: list[AssignmentTitle] = Field(description="Published assignment titles (public).")
     created_at: IstDateTime

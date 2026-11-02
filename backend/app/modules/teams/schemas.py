@@ -13,6 +13,7 @@ class TeamIn(BaseModel):
 
 class TeamMemberOut(BaseModel):
     user: UserBrief
+    email: str | None = None
     status: Literal["active", "removed", "former"]
     joined_at: IstDateTime
 

@@ -98,6 +98,7 @@ def summaries(db: Session, courses: list[Course], user: User | None) -> list[dic
     }
     teachers = _teachers_by_course(db, ids)
     mine = _my_statuses(db, user, ids)
+    assignments, resources = _published_counts(db, ids)
     return [
         {
             "id": c.id,
@@ -109,9 +110,35 @@ def summaries(db: Session, courses: list[Course], user: User | None) -> list[dic
             "join_requests_open": c.join_requests_open,
             "archived": c.archived_at is not None,
             "my_status": mine.get(c.id, "none"),
+            "assignment_count": assignments.get(c.id, 0),
+            "resource_count": resources.get(c.id, 0),
         }
         for c in courses
     ]
+
+
+def _published_counts(db: Session, ids: list[int]) -> tuple[dict[int, int], dict[int, int]]:
+    """Published assignments and resources per course, for the catalogue cards."""
+    from app.modules.assignments.models import Assignment
+    from app.modules.resources.models import Resource
+
+    if not ids:
+        return {}, {}
+    assignments = dict(
+        db.execute(
+            select(Assignment.course_id, func.count())
+            .where(Assignment.course_id.in_(ids), Assignment.status != "draft")
+            .group_by(Assignment.course_id)
+        ).all()
+    )
+    resources = dict(
+        db.execute(
+            select(Resource.course_id, func.count())
+            .where(Resource.course_id.in_(ids), Resource.status == "published")
+            .group_by(Resource.course_id)
+        ).all()
+    )
+    return assignments, resources
 
 
 def catalogue(
@@ -178,6 +205,7 @@ def course_detail(db: Session, user: User | None, course_id: int) -> dict:
     out["description"] = course.description
     out["created_at"] = course.created_at
     out["student_count"] = len(student_ids(db, course.id))
+    out["my_enrolment"] = _my_enrolment(db, user, course.id)
     out["assignments"] = [
         {"id": a.id, "title": a.title, "kind": a.kind, "due_at": a.due_at}
         for a in db.scalars(
@@ -187,6 +215,26 @@ def course_detail(db: Session, user: User | None, course_id: int) -> dict:
         )
     ]
     return out
+
+
+def _my_enrolment(db: Session, user: User | None, course_id: int) -> dict | None:
+    """When and how the user joined (for "Your enrolment" on the course page)."""
+    if user is None:
+        return None
+    row = db.scalar(
+        select(Enrollment).where(
+            Enrollment.course_id == course_id, Enrollment.user_id == user.id, Enrollment.status == "active"
+        )
+    )
+    if row is None:
+        return None
+    by = db.get(User, row.decided_by) if row.decided_by else None
+    return {
+        "role": row.role,
+        "joined_at": row.decided_at or row.created_at,
+        "via": "join_request" if row.requested_at else ("invitation" if by and by.id != user.id else "added"),
+        "decided_by": {"id": by.id, "name": by.name} if by else None,
+    }
 
 
 # ---------------------------------------------------------------- creating and editing

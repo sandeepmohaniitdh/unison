@@ -53,6 +53,7 @@ class TeamRef(BaseModel):
     assignment_title: str
     due_at: IstDateTime
     members: list[str]
+    max_team: int = Field(description="Largest team size allowed by the assignment.")
 
 
 InvitationProblem = Literal["expired", "used", "cancelled", "declined", "log_in", "wrong_account", "email_not_verified"]

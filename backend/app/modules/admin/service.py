@@ -1,6 +1,6 @@
 """Admin console: audit log, platform settings, users and roles, statistics."""
 
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Any
 
 from sqlalchemy import func, or_, select
@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 
 from app.core.errors import bad_request, conflict, not_found
 from app.core.pagination import PageParams, paginate
-from app.core.time import Clock
+from app.core.time import Clock, utcnow
 from app.modules.admin.models import AuditLog, PlatformSetting
 from app.modules.users.models import User, UserEmail
 
@@ -273,11 +273,15 @@ def user_detail(db: Session, user_id: int) -> dict:
 # ---------------------------------------------------------------- statistics
 
 
-def stats(db: Session) -> dict:
+def stats(db: Session, now: datetime | None = None) -> dict:
     from app.modules.assignments.models import Assignment
     from app.modules.courses.models import Course, Department
+    from app.modules.notifications.models import EmailOutbox
     from app.modules.submissions.models import FinalSubmission, SubmissionVersion
     from app.modules.teams.models import Team
+
+    now = now or utcnow()
+    week_ago = now - timedelta(days=7)
 
     def count(stmt) -> int:
         return db.scalar(stmt) or 0
@@ -301,6 +305,17 @@ def stats(db: Session) -> dict:
         "teams": count(select(func.count()).where(Team.closed_at.is_(None))),
         "drafts": count(select(func.count()).select_from(SubmissionVersion)),
         "finals": count(select(func.count()).where(FinalSubmission.replaced_at.is_(None))),
+        "finals_this_week": count(select(func.count()).where(FinalSubmission.submitted_at >= week_ago)),
+        "finals_last_week": count(
+            select(func.count()).where(
+                FinalSubmission.submitted_at >= week_ago - timedelta(days=7), FinalSubmission.submitted_at < week_ago
+            )
+        ),
+        "failed_emails_24h": count(
+            select(func.count()).where(
+                EmailOutbox.status == "failed", EmailOutbox.send_after >= now - timedelta(days=1)
+            )
+        ),
     }
 
 

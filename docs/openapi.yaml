@@ -6928,11 +6928,24 @@ components:
           - none
           title: My Status
           description: '''none'' when not logged in or not a member.'
+        assignment_count:
+          type: integer
+          title: Assignment Count
+          description: Published assignments.
+        resource_count:
+          type: integer
+          title: Resource Count
+          description: Published resources.
         description:
           anyOf:
           - type: string
           - type: 'null'
           title: Description
+        my_enrolment:
+          anyOf:
+          - $ref: '#/components/schemas/MyEnrolment'
+          - type: 'null'
+          description: Your own active membership, if any.
         student_count:
           type: integer
           title: Student Count
@@ -6958,7 +6971,10 @@ components:
       - join_requests_open
       - archived
       - my_status
+      - assignment_count
+      - resource_count
       - description
+      - my_enrolment
       - student_count
       - assignments
       - created_at
@@ -7113,6 +7129,14 @@ components:
           - none
           title: My Status
           description: '''none'' when not logged in or not a member.'
+        assignment_count:
+          type: integer
+          title: Assignment Count
+          description: Published assignments.
+        resource_count:
+          type: integer
+          title: Resource Count
+          description: Published resources.
       type: object
       required:
       - id
@@ -7124,6 +7148,8 @@ components:
       - join_requests_open
       - archived
       - my_status
+      - assignment_count
+      - resource_count
       title: CourseSummary
     CourseUpdate:
       properties:
@@ -8149,6 +8175,37 @@ components:
       required:
       - status
       title: MemberUpdate
+    MyEnrolment:
+      properties:
+        role:
+          type: string
+          enum:
+          - student
+          - teacher
+          title: Role
+        joined_at:
+          type: string
+          format: date-time
+          title: Joined At
+          example: '2026-11-05T23:59:59+05:30'
+        via:
+          type: string
+          enum:
+          - invitation
+          - join_request
+          - added
+          title: Via
+        decided_by:
+          anyOf:
+          - $ref: '#/components/schemas/UserBrief'
+          - type: 'null'
+      type: object
+      required:
+      - role
+      - joined_at
+      - via
+      - decided_by
+      title: MyEnrolment
     MyMarks:
       properties:
         assignment:
@@ -9514,6 +9571,18 @@ components:
         finals:
           type: integer
           title: Finals
+        finals_this_week:
+          type: integer
+          title: Finals This Week
+          description: Finals submitted in the last 7 days.
+        finals_last_week:
+          type: integer
+          title: Finals Last Week
+          description: Finals submitted 8 to 14 days ago.
+        failed_emails_24h:
+          type: integer
+          title: Failed Emails 24H
+          description: Emails that failed for good in the last 24 hours.
       type: object
       required:
       - users
@@ -9525,6 +9594,9 @@ components:
       - teams
       - drafts
       - finals
+      - finals_this_week
+      - finals_last_week
+      - failed_emails_24h
       title: Stats
     StudentDashboard:
       properties:
@@ -9667,6 +9739,12 @@ components:
         title:
           type: string
           title: Title
+        kind:
+          type: string
+          enum:
+          - individual
+          - group
+          title: Kind
         course:
           $ref: '#/components/schemas/DashCourse'
         due_at:
@@ -9700,6 +9778,7 @@ components:
       required:
       - id
       - title
+      - kind
       - course
       - due_at
       - status
@@ -9794,6 +9873,11 @@ components:
       properties:
         user:
           $ref: '#/components/schemas/UserBrief'
+        email:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Email
         status:
           type: string
           enum:
@@ -9915,6 +9999,10 @@ components:
             type: string
           type: array
           title: Members
+        max_team:
+          type: integer
+          title: Max Team
+          description: Largest team size allowed by the assignment.
       type: object
       required:
       - id
@@ -9923,6 +10011,7 @@ components:
       - assignment_title
       - due_at
       - members
+      - max_team
       title: TeamRef
     TokenIn:
       properties:
