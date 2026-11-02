@@ -73,6 +73,7 @@ class Health(BaseModel):
 def create_app() -> FastAPI:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
     settings = get_settings()
+    settings.check_production()
     app = FastAPI(
         title="Unison API",
         version=VERSION,

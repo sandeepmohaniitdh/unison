@@ -91,6 +91,7 @@ def seed_if_empty() -> None:
 
 def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
+    get_settings().check_production()
     wait_for_database()
     migrate()
     logging.getLogger().setLevel(logging.INFO)  # Alembic's logging setup lowers it

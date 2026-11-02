@@ -38,6 +38,10 @@ class Settings(BaseModel):
     smtp_host: str = "mailpit"
     smtp_port: int = 1025
     smtp_from: str = "Unison <no-reply@unison.local>"
+    # A real mail service (for example Brevo, SendGrid or Gmail) needs a login and STARTTLS.
+    smtp_username: str = ""
+    smtp_password: str = ""
+    smtp_starttls: bool = False
 
     upload_dir: str = "/data/uploads"
 
@@ -56,6 +60,34 @@ class Settings(BaseModel):
     seed_on_start: bool = True
     worker_interval_seconds: int = 30
     worker_heartbeat_file: str = "/tmp/unison-worker-heartbeat"
+
+    def production_problems(self) -> list[str]:
+        """Settings that are fine on a laptop but unsafe on a public server.
+
+        Only checked when APP_ENV=production; the services refuse to start until
+        every problem is fixed.
+        """
+        if self.app_env != "production":
+            return []
+        problems = []
+        if self.auth_mode != "session":
+            problems.append("AUTH_MODE must be session (demo lets anyone log in with a header).")
+        if self.secret_key == "dev-secret-change-me" or len(self.secret_key) < 32:
+            problems.append("SECRET_KEY must be a long random value (at least 32 characters).")
+        if not self.cookie_secure:
+            problems.append("COOKIE_SECURE must be true (the site must use HTTPS).")
+        if not self.frontend_url.startswith("https://") or not self.api_url.startswith("https://"):
+            problems.append("FRONTEND_URL and API_URL must start with https://.")
+        if self.admin_password == "unison-admin":
+            problems.append("ADMIN_PASSWORD must not be the demo password.")
+        if self.seed_on_start:
+            problems.append("SEED_ON_START must be false (no demo data on a real site).")
+        return problems
+
+    def check_production(self) -> None:
+        problems = self.production_problems()
+        if problems:
+            raise RuntimeError("Unsafe settings for APP_ENV=production:\n- " + "\n- ".join(problems))
 
     @property
     def google_enabled(self) -> bool:

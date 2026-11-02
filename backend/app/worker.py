@@ -50,7 +50,15 @@ def run_once(settings: Settings, mailer: Mailer, clock: Clock, storage: LocalSto
 def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
     settings = get_settings()
-    mailer = SmtpMailer(settings.smtp_host, settings.smtp_port, settings.smtp_from)
+    settings.check_production()
+    mailer = SmtpMailer(
+        settings.smtp_host,
+        settings.smtp_port,
+        settings.smtp_from,
+        username=settings.smtp_username,
+        password=settings.smtp_password,
+        starttls=settings.smtp_starttls,
+    )
     storage = LocalStorage(settings.upload_dir)
     provider = get_provider(settings)
     clock = Clock()
