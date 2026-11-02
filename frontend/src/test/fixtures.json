@@ -1,0 +1,3769 @@
+{
+ "anon /users/me": {
+  "status": 401,
+  "body": {
+   "error": {
+    "code": "NOT_AUTHENTICATED",
+    "message": "Please log in.",
+    "details": null,
+    "request_id": "351cb6377d394382"
+   }
+  }
+ },
+ "anon /departments?page=1&size=50": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "id": 1,
+     "code": "CSE",
+     "name": "Computer Science and Engineering"
+    },
+    {
+     "id": 2,
+     "code": "EE",
+     "name": "Electrical Engineering"
+    },
+    {
+     "id": 4,
+     "code": "MA",
+     "name": "Mathematics"
+    },
+    {
+     "id": 3,
+     "code": "ME",
+     "name": "Mechanical Engineering"
+    },
+    {
+     "id": 5,
+     "code": "PH",
+     "name": "Physics"
+    }
+   ],
+   "page": 1,
+   "size": 50,
+   "total": 5
+  }
+ },
+ "anon /courses?term=Jul-Nov+2026&page=1&size=6": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "id": 1,
+     "code": "CS301",
+     "term": "Jul-Nov 2026",
+     "title": "Software Engineering",
+     "department": {
+      "id": 1,
+      "code": "CSE",
+      "name": "Computer Science and Engineering"
+     },
+     "teachers": [
+      {
+       "id": 3,
+       "name": "Dr. Kavya Menon"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "none",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 2,
+     "code": "CS302",
+     "term": "Jul-Nov 2026",
+     "title": "Database Systems",
+     "department": {
+      "id": 1,
+      "code": "CSE",
+      "name": "Computer Science and Engineering"
+     },
+     "teachers": [
+      {
+       "id": 4,
+       "name": "Dr. Ekaja Thakkar"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "none",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 3,
+     "code": "CS305",
+     "term": "Jul-Nov 2026",
+     "title": "Computer Networks",
+     "department": {
+      "id": 1,
+      "code": "CSE",
+      "name": "Computer Science and Engineering"
+     },
+     "teachers": [
+      {
+       "id": 5,
+       "name": "Dr. Udant Salvi"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "none",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 4,
+     "code": "CS310",
+     "term": "Jul-Nov 2026",
+     "title": "Machine Learning Basics",
+     "department": {
+      "id": 1,
+      "code": "CSE",
+      "name": "Computer Science and Engineering"
+     },
+     "teachers": [
+      {
+       "id": 6,
+       "name": "Dr. Ridhi Khatri"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "none",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 5,
+     "code": "EE201",
+     "term": "Jul-Nov 2026",
+     "title": "Signals and Systems",
+     "department": {
+      "id": 2,
+      "code": "EE",
+      "name": "Electrical Engineering"
+     },
+     "teachers": [
+      {
+       "id": 7,
+       "name": "Dr. Faris Choudhry"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "none",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 6,
+     "code": "EE204",
+     "term": "Jul-Nov 2026",
+     "title": "Digital Circuits",
+     "department": {
+      "id": 2,
+      "code": "EE",
+      "name": "Electrical Engineering"
+     },
+     "teachers": [
+      {
+       "id": 8,
+       "name": "Dr. Guneet Sengupta"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "none",
+     "assignment_count": 3,
+     "resource_count": 4
+    }
+   ],
+   "page": 1,
+   "size": 6,
+   "total": 20
+  }
+ },
+ "anon /courses/1": {
+  "status": 200,
+  "body": {
+   "id": 1,
+   "code": "CS301",
+   "term": "Jul-Nov 2026",
+   "title": "Software Engineering",
+   "department": {
+    "id": 1,
+    "code": "CSE",
+    "name": "Computer Science and Engineering"
+   },
+   "teachers": [
+    {
+     "id": 3,
+     "name": "Dr. Kavya Menon"
+    }
+   ],
+   "join_requests_open": true,
+   "archived": false,
+   "my_status": "none",
+   "assignment_count": 3,
+   "resource_count": 4,
+   "description": "Software Engineering: lectures, assignments and a team project. Invented demo course.",
+   "my_enrolment": null,
+   "student_count": 60,
+   "assignments": [
+    {
+     "id": 2,
+     "title": "Problem set 1",
+     "kind": "individual",
+     "due_at": "2026-10-18T01:15:19+05:30"
+    },
+    {
+     "id": 1,
+     "title": "Course project",
+     "kind": "group",
+     "due_at": "2026-11-09T01:15:19+05:30"
+    },
+    {
+     "id": 3,
+     "title": "Problem set 2",
+     "kind": "individual",
+     "due_at": "2026-11-13T01:15:19+05:30"
+    }
+   ],
+   "created_at": "2026-09-10T01:15:19+05:30"
+  }
+ },
+ "anon /auth/config": {
+  "status": 200,
+  "body": {
+   "google_enabled": false,
+   "allowed_email_domain": "iitdh.ac.in",
+   "auth_mode": "demo",
+   "csrf_header": "X-Unison-Client"
+  }
+ },
+ "student /users/me": {
+  "status": 200,
+  "body": {
+   "id": 18,
+   "name": "Sandeep M",
+   "role": "student",
+   "status": "active",
+   "emails": [
+    {
+     "id": 18,
+     "email": "demo.student@example.com",
+     "is_primary": true,
+     "verified": true
+    }
+   ],
+   "has_password": true,
+   "google_linked": false,
+   "must_change_password": false,
+   "created_at": "2026-08-31T01:15:19+05:30"
+  }
+ },
+ "student /notifications/unread-count": {
+  "status": 200,
+  "body": {
+   "unread": 5
+  }
+ },
+ "student /users/me/invitations?page=1&size=50": {
+  "status": 200,
+  "body": {
+   "items": [],
+   "page": 1,
+   "size": 50,
+   "total": 0
+  }
+ },
+ "student /dashboards/student": {
+  "status": 200,
+  "body": {
+   "unread_notifications": 5,
+   "notifications": [
+    {
+     "id": 1173,
+     "event_type": "marks_released",
+     "title": "Marks released for Problem set 1",
+     "link": "/teams/1385/marks",
+     "course_id": 16,
+     "read": false,
+     "created_at": "2026-10-22T01:15:19+05:30"
+    },
+    {
+     "id": 872,
+     "event_type": "marks_released",
+     "title": "Marks released for Problem set 1",
+     "link": "/teams/930/marks",
+     "course_id": 11,
+     "read": false,
+     "created_at": "2026-10-22T01:15:19+05:30"
+    },
+    {
+     "id": 571,
+     "event_type": "marks_released",
+     "title": "Marks released for Problem set 1",
+     "link": "/teams/475/marks",
+     "course_id": 6,
+     "read": false,
+     "created_at": "2026-10-22T01:15:19+05:30"
+    },
+    {
+     "id": 1,
+     "event_type": "marks_released",
+     "title": "Marks released for Problem set 1",
+     "link": "/teams/20/marks",
+     "course_id": 1,
+     "read": false,
+     "created_at": "2026-10-22T01:15:19+05:30"
+    },
+    {
+     "id": 1174,
+     "event_type": "assignment_published",
+     "title": "New assignment in MA310: Problem set 2",
+     "link": "/courses/16",
+     "course_id": 16,
+     "read": true,
+     "created_at": "2026-10-20T01:15:19+05:30"
+    }
+   ],
+   "courses": [
+    {
+     "id": 1,
+     "code": "CS301",
+     "title": "Software Engineering",
+     "term": "Jul-Nov 2026"
+    },
+    {
+     "id": 6,
+     "code": "EE204",
+     "title": "Digital Circuits",
+     "term": "Jul-Nov 2026"
+    },
+    {
+     "id": 16,
+     "code": "MA310",
+     "title": "Optimisation",
+     "term": "Jul-Nov 2026"
+    },
+    {
+     "id": 11,
+     "code": "ME305",
+     "title": "Design of Machine Elements",
+     "term": "Jul-Nov 2026"
+    }
+   ],
+   "upcoming_deadlines": [
+    {
+     "assignment_id": 1,
+     "title": "Course project",
+     "course": {
+      "id": 1,
+      "code": "CS301",
+      "title": "Software Engineering",
+      "term": "Jul-Nov 2026"
+     },
+     "kind": "group",
+     "due_at": "2026-11-09T01:15:19+05:30",
+     "team_id": 1,
+     "state": "final_submitted"
+    },
+    {
+     "assignment_id": 31,
+     "title": "Course project",
+     "course": {
+      "id": 11,
+      "code": "ME305",
+      "title": "Design of Machine Elements",
+      "term": "Jul-Nov 2026"
+     },
+     "kind": "group",
+     "due_at": "2026-11-09T01:15:19+05:30",
+     "team_id": 923,
+     "state": "final_submitted"
+    },
+    {
+     "assignment_id": 3,
+     "title": "Problem set 2",
+     "course": {
+      "id": 1,
+      "code": "CS301",
+      "title": "Software Engineering",
+      "term": "Jul-Nov 2026"
+     },
+     "kind": "individual",
+     "due_at": "2026-11-13T01:15:19+05:30",
+     "team_id": null,
+     "state": "no_work"
+    },
+    {
+     "assignment_id": 18,
+     "title": "Problem set 2",
+     "course": {
+      "id": 6,
+      "code": "EE204",
+      "title": "Digital Circuits",
+      "term": "Jul-Nov 2026"
+     },
+     "kind": "individual",
+     "due_at": "2026-11-13T01:15:19+05:30",
+     "team_id": null,
+     "state": "no_work"
+    },
+    {
+     "assignment_id": 33,
+     "title": "Problem set 2",
+     "course": {
+      "id": 11,
+      "code": "ME305",
+      "title": "Design of Machine Elements",
+      "term": "Jul-Nov 2026"
+     },
+     "kind": "individual",
+     "due_at": "2026-11-13T01:15:19+05:30",
+     "team_id": null,
+     "state": "no_work"
+    },
+    {
+     "assignment_id": 48,
+     "title": "Problem set 2",
+     "course": {
+      "id": 16,
+      "code": "MA310",
+      "title": "Optimisation",
+      "term": "Jul-Nov 2026"
+     },
+     "kind": "individual",
+     "due_at": "2026-11-13T01:15:19+05:30",
+     "team_id": null,
+     "state": "no_work"
+    }
+   ],
+   "pending_invitations": [],
+   "released_marks": [
+    {
+     "assignment_id": 46,
+     "title": "Course project",
+     "team_id": 1383,
+     "my_mark": "37.7",
+     "max_mark": "50.0",
+     "released_at": "2026-10-28T01:15:19+05:30"
+    },
+    {
+     "assignment_id": 16,
+     "title": "Course project",
+     "team_id": 471,
+     "my_mark": "31.3",
+     "max_mark": "50.0",
+     "released_at": "2026-10-28T01:15:19+05:30"
+    },
+    {
+     "assignment_id": 47,
+     "title": "Problem set 1",
+     "team_id": 1385,
+     "my_mark": "14.2",
+     "max_mark": "20.0",
+     "released_at": "2026-10-22T01:15:19+05:30"
+    },
+    {
+     "assignment_id": 2,
+     "title": "Problem set 1",
+     "team_id": 20,
+     "my_mark": "17.5",
+     "max_mark": "20.0",
+     "released_at": "2026-10-22T01:15:19+05:30"
+    },
+    {
+     "assignment_id": 17,
+     "title": "Problem set 1",
+     "team_id": 475,
+     "my_mark": "16.2",
+     "max_mark": "20.0",
+     "released_at": "2026-10-22T01:15:19+05:30"
+    }
+   ]
+  }
+ },
+ "student /users/me/courses?page=1&size=12": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "id": 1,
+     "code": "CS301",
+     "term": "Jul-Nov 2026",
+     "title": "Software Engineering",
+     "department": {
+      "id": 1,
+      "code": "CSE",
+      "name": "Computer Science and Engineering"
+     },
+     "teachers": [
+      {
+       "id": 3,
+       "name": "Dr. Kavya Menon"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "student",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 6,
+     "code": "EE204",
+     "term": "Jul-Nov 2026",
+     "title": "Digital Circuits",
+     "department": {
+      "id": 2,
+      "code": "EE",
+      "name": "Electrical Engineering"
+     },
+     "teachers": [
+      {
+       "id": 8,
+       "name": "Dr. Guneet Sengupta"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "student",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 16,
+     "code": "MA310",
+     "term": "Jul-Nov 2026",
+     "title": "Optimisation",
+     "department": {
+      "id": 4,
+      "code": "MA",
+      "name": "Mathematics"
+     },
+     "teachers": [
+      {
+       "id": 3,
+       "name": "Dr. Kavya Menon"
+      },
+      {
+       "id": 10,
+       "name": "Dr. Mekhala Krishnamurthy"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "student",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 11,
+     "code": "ME305",
+     "term": "Jul-Nov 2026",
+     "title": "Design of Machine Elements",
+     "department": {
+      "id": 3,
+      "code": "ME",
+      "name": "Mechanical Engineering"
+     },
+     "teachers": [
+      {
+       "id": 13,
+       "name": "Dr. Bhavna Shankar"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "student",
+     "assignment_count": 3,
+     "resource_count": 4
+    }
+   ],
+   "page": 1,
+   "size": 12,
+   "total": 4
+  }
+ },
+ "student /courses/1": {
+  "status": 200,
+  "body": {
+   "id": 1,
+   "code": "CS301",
+   "term": "Jul-Nov 2026",
+   "title": "Software Engineering",
+   "department": {
+    "id": 1,
+    "code": "CSE",
+    "name": "Computer Science and Engineering"
+   },
+   "teachers": [
+    {
+     "id": 3,
+     "name": "Dr. Kavya Menon"
+    }
+   ],
+   "join_requests_open": true,
+   "archived": false,
+   "my_status": "student",
+   "assignment_count": 3,
+   "resource_count": 4,
+   "description": "Software Engineering: lectures, assignments and a team project. Invented demo course.",
+   "my_enrolment": {
+    "role": "student",
+    "joined_at": "2026-09-15T01:15:19+05:30",
+    "via": "invitation",
+    "decided_by": {
+     "id": 3,
+     "name": "Dr. Kavya Menon"
+    }
+   },
+   "student_count": 60,
+   "assignments": [
+    {
+     "id": 2,
+     "title": "Problem set 1",
+     "kind": "individual",
+     "due_at": "2026-10-18T01:15:19+05:30"
+    },
+    {
+     "id": 1,
+     "title": "Course project",
+     "kind": "group",
+     "due_at": "2026-11-09T01:15:19+05:30"
+    },
+    {
+     "id": 3,
+     "title": "Problem set 2",
+     "kind": "individual",
+     "due_at": "2026-11-13T01:15:19+05:30"
+    }
+   ],
+   "created_at": "2026-09-10T01:15:19+05:30"
+  }
+ },
+ "student /courses/1/resources?status=published&size=50": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "id": 4,
+     "course_id": 1,
+     "title": "Problem set hints",
+     "description": null,
+     "kind": "link",
+     "file_name": null,
+     "mime_type": null,
+     "size_bytes": null,
+     "url": "https://example.com/cs301/3",
+     "status": "published",
+     "published_at": "2026-10-05T01:15:19+05:30",
+     "created_by": {
+      "id": 3,
+      "name": "Dr. Kavya Menon"
+     },
+     "created_at": "2026-10-05T01:15:19+05:30"
+    },
+    {
+     "id": 3,
+     "course_id": 1,
+     "title": "Lecture 2 notes",
+     "description": null,
+     "kind": "file",
+     "file_name": "lecture-2-notes.pdf",
+     "mime_type": "application/pdf",
+     "size_bytes": 695,
+     "url": null,
+     "status": "published",
+     "published_at": "2026-09-30T01:15:19+05:30",
+     "created_by": {
+      "id": 3,
+      "name": "Dr. Kavya Menon"
+     },
+     "created_at": "2026-09-30T01:15:19+05:30"
+    },
+    {
+     "id": 2,
+     "course_id": 1,
+     "title": "Lecture 1 slides",
+     "description": null,
+     "kind": "file",
+     "file_name": "lecture-1-slides.pdf",
+     "mime_type": "application/pdf",
+     "size_bytes": 696,
+     "url": null,
+     "status": "published",
+     "published_at": "2026-09-25T01:15:19+05:30",
+     "created_by": {
+      "id": 3,
+      "name": "Dr. Kavya Menon"
+     },
+     "created_at": "2026-09-25T01:15:19+05:30"
+    },
+    {
+     "id": 1,
+     "course_id": 1,
+     "title": "Course outline",
+     "description": null,
+     "kind": "file",
+     "file_name": "course-outline.pdf",
+     "mime_type": "application/pdf",
+     "size_bytes": 694,
+     "url": null,
+     "status": "published",
+     "published_at": "2026-09-20T01:15:19+05:30",
+     "created_by": {
+      "id": 3,
+      "name": "Dr. Kavya Menon"
+     },
+     "created_at": "2026-09-20T01:15:19+05:30"
+    }
+   ],
+   "page": 1,
+   "size": 50,
+   "total": 4
+  }
+ },
+ "student /courses/1/assignments?page=1&size=50": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "id": 2,
+     "course_id": 1,
+     "title": "Problem set 1",
+     "kind": "individual",
+     "min_team": 1,
+     "max_team": 1,
+     "due_at": "2026-10-18T01:15:19+05:30",
+     "status": "closed",
+     "teams_locked": false,
+     "total_points": "20.0",
+     "my_team": {
+      "team_id": 20,
+      "state": "marks_released"
+     }
+    },
+    {
+     "id": 1,
+     "course_id": 1,
+     "title": "Course project",
+     "kind": "group",
+     "min_team": 2,
+     "max_team": 4,
+     "due_at": "2026-11-09T01:15:19+05:30",
+     "status": "published",
+     "teams_locked": false,
+     "total_points": "50.0",
+     "my_team": {
+      "team_id": 1,
+      "state": "final_submitted"
+     }
+    },
+    {
+     "id": 3,
+     "course_id": 1,
+     "title": "Problem set 2",
+     "kind": "individual",
+     "min_team": 1,
+     "max_team": 1,
+     "due_at": "2026-11-13T01:15:19+05:30",
+     "status": "published",
+     "teams_locked": false,
+     "total_points": "20.0",
+     "my_team": {
+      "team_id": null,
+      "state": "no_work"
+     }
+    }
+   ],
+   "page": 1,
+   "size": 50,
+   "total": 3
+  }
+ },
+ "student /teams/1": {
+  "status": 200,
+  "body": {
+   "id": 1,
+   "name": "Byte Builders",
+   "assignment_id": 1,
+   "course_id": 1,
+   "kind": "group",
+   "min_team": 2,
+   "max_team": 4,
+   "closed": false,
+   "created_by": 18,
+   "members": [
+    {
+     "user": {
+      "id": 18,
+      "name": "Sandeep M"
+     },
+     "email": "demo.student@example.com",
+     "status": "active",
+     "joined_at": "2026-10-22T01:15:19+05:30"
+    },
+    {
+     "user": {
+      "id": 19,
+      "name": "Km Shristi Singh"
+     },
+     "email": "shristi.demo@example.com",
+     "status": "active",
+     "joined_at": "2026-10-22T01:15:19+05:30"
+    },
+    {
+     "user": {
+      "id": 20,
+      "name": "Tirtho Paul"
+     },
+     "email": "tirtho.demo@example.com",
+     "status": "active",
+     "joined_at": "2026-10-22T01:15:19+05:30"
+    }
+   ],
+   "pending_invitations": [
+    {
+     "id": 16,
+     "email": "ujjwal.demo@example.com",
+     "invited_by": {
+      "id": 18,
+      "name": "Sandeep M"
+     },
+     "expires_at": "2026-11-05T01:15:19+05:30"
+    }
+   ],
+   "places_left": 0,
+   "has_final": true,
+   "state": "final_submitted"
+  }
+ },
+ "student /assignments/1": {
+  "status": 200,
+  "body": {
+   "id": 1,
+   "course_id": 1,
+   "title": "Course project",
+   "kind": "group",
+   "min_team": 2,
+   "max_team": 4,
+   "due_at": "2026-11-09T01:15:19+05:30",
+   "status": "published",
+   "teams_locked": false,
+   "total_points": "50.0",
+   "my_team": {
+    "team_id": 1,
+    "state": "final_submitted"
+   },
+   "description": "Course project for CS301.",
+   "max_files": 5,
+   "requires_pdf": true,
+   "published_at": "2026-10-19T01:15:19+05:30",
+   "rubric": [
+    {
+     "id": 1,
+     "position": 1,
+     "title": "Design",
+     "max_points": "15.0"
+    },
+    {
+     "id": 2,
+     "position": 2,
+     "title": "Implementation",
+     "max_points": "20.0"
+    },
+    {
+     "id": 3,
+     "position": 3,
+     "title": "Report",
+     "max_points": "15.0"
+    }
+   ]
+  }
+ },
+ "student /teams/1/submission/drafts?page=1&size=50": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "id": 3,
+     "number": 3,
+     "uploaded_by": {
+      "id": 20,
+      "name": "Tirtho Paul"
+     },
+     "created_at": "2026-11-02T01:15:19+05:30",
+     "files": [
+      {
+       "id": 5,
+       "file_name": "report.pdf",
+       "mime_type": "application/pdf",
+       "size_bytes": 726
+      },
+      {
+       "id": 6,
+       "file_name": "slides.pdf",
+       "mime_type": "application/pdf",
+       "size_bytes": 726
+      }
+     ],
+     "is_current_final": false
+    },
+    {
+     "id": 2,
+     "number": 2,
+     "uploaded_by": {
+      "id": 19,
+      "name": "Km Shristi Singh"
+     },
+     "created_at": "2026-10-31T01:15:19+05:30",
+     "files": [
+      {
+       "id": 3,
+       "file_name": "report.pdf",
+       "mime_type": "application/pdf",
+       "size_bytes": 731
+      },
+      {
+       "id": 4,
+       "file_name": "slides.pdf",
+       "mime_type": "application/pdf",
+       "size_bytes": 731
+      }
+     ],
+     "is_current_final": true
+    },
+    {
+     "id": 1,
+     "number": 1,
+     "uploaded_by": {
+      "id": 18,
+      "name": "Sandeep M"
+     },
+     "created_at": "2026-10-28T01:15:19+05:30",
+     "files": [
+      {
+       "id": 1,
+       "file_name": "report.pdf",
+       "mime_type": "application/pdf",
+       "size_bytes": 724
+      },
+      {
+       "id": 2,
+       "file_name": "slides.pdf",
+       "mime_type": "application/pdf",
+       "size_bytes": 724
+      }
+     ],
+     "is_current_final": false
+    }
+   ],
+   "page": 1,
+   "size": 50,
+   "total": 3
+  }
+ },
+ "student /teams/1/submission": {
+  "status": 200,
+  "body": {
+   "team_id": 1,
+   "assignment_id": 1,
+   "state": "final_submitted",
+   "due_at": "2026-11-09T01:15:19+05:30",
+   "closed_at": null,
+   "current_final": {
+    "id": 1,
+    "version_id": 2,
+    "version_number": 2,
+    "submitted_by": {
+     "id": 19,
+     "name": "Km Shristi Singh"
+    },
+    "kind": "manual",
+    "below_min_size": false,
+    "submitted_at": "2026-11-01T01:15:19+05:30",
+    "replaced_at": null,
+    "files": [
+     {
+      "id": 3,
+      "file_name": "report.pdf",
+      "mime_type": "application/pdf",
+      "size_bytes": 731
+     },
+     {
+      "id": 4,
+      "file_name": "slides.pdf",
+      "mime_type": "application/pdf",
+      "size_bytes": 731
+     }
+    ]
+   },
+   "replaced_finals": 0,
+   "drafts_count": 3
+  }
+ },
+ "student /assignments/2": {
+  "status": 200,
+  "body": {
+   "id": 2,
+   "course_id": 1,
+   "title": "Problem set 1",
+   "kind": "individual",
+   "min_team": 1,
+   "max_team": 1,
+   "due_at": "2026-10-18T01:15:19+05:30",
+   "status": "closed",
+   "teams_locked": false,
+   "total_points": "20.0",
+   "my_team": {
+    "team_id": 20,
+    "state": "marks_released"
+   },
+   "description": "Problem set 1 for CS301.",
+   "max_files": 5,
+   "requires_pdf": true,
+   "published_at": "2026-09-27T01:15:19+05:30",
+   "rubric": [
+    {
+     "id": 4,
+     "position": 1,
+     "title": "Correctness",
+     "max_points": "10.0"
+    },
+    {
+     "id": 5,
+     "position": 2,
+     "title": "Clarity",
+     "max_points": "10.0"
+    }
+   ]
+  }
+ },
+ "student /assignments/2/my-team": {
+  "status": 200,
+  "body": {
+   "id": 20,
+   "name": "Individual 18",
+   "assignment_id": 2,
+   "course_id": 1,
+   "kind": "individual",
+   "min_team": 1,
+   "max_team": 1,
+   "closed": false,
+   "created_by": 18,
+   "members": [
+    {
+     "user": {
+      "id": 18,
+      "name": "Sandeep M"
+     },
+     "email": "demo.student@example.com",
+     "status": "active",
+     "joined_at": "2026-10-08T01:15:19+05:30"
+    }
+   ],
+   "pending_invitations": [],
+   "places_left": 0,
+   "has_final": true,
+   "state": "marks_released"
+  }
+ },
+ "student /teams/20": {
+  "status": 200,
+  "body": {
+   "id": 20,
+   "name": "Individual 18",
+   "assignment_id": 2,
+   "course_id": 1,
+   "kind": "individual",
+   "min_team": 1,
+   "max_team": 1,
+   "closed": false,
+   "created_by": 18,
+   "members": [
+    {
+     "user": {
+      "id": 18,
+      "name": "Sandeep M"
+     },
+     "email": "demo.student@example.com",
+     "status": "active",
+     "joined_at": "2026-10-08T01:15:19+05:30"
+    }
+   ],
+   "pending_invitations": [],
+   "places_left": 0,
+   "has_final": true,
+   "state": "marks_released"
+  }
+ },
+ "student /teams/20/submission": {
+  "status": 200,
+  "body": {
+   "team_id": 20,
+   "assignment_id": 2,
+   "state": "marks_released",
+   "due_at": "2026-10-18T01:15:19+05:30",
+   "closed_at": "2026-10-18T01:16:19+05:30",
+   "current_final": {
+    "id": 11,
+    "version_id": 55,
+    "version_number": 1,
+    "submitted_by": {
+     "id": 18,
+     "name": "Sandeep M"
+    },
+    "kind": "manual",
+    "below_min_size": false,
+    "submitted_at": "2026-10-15T11:04:21+05:30",
+    "replaced_at": null,
+    "files": [
+     {
+      "id": 109,
+      "file_name": "report.pdf",
+      "mime_type": "application/pdf",
+      "size_bytes": 724
+     }
+    ]
+   },
+   "replaced_finals": 0,
+   "drafts_count": 1
+  }
+ },
+ "student /teams/20/submission/drafts?page=1&size=50": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "id": 55,
+     "number": 1,
+     "uploaded_by": {
+      "id": 18,
+      "name": "Sandeep M"
+     },
+     "created_at": "2026-10-15T10:59:21+05:30",
+     "files": [
+      {
+       "id": 109,
+       "file_name": "report.pdf",
+       "mime_type": "application/pdf",
+       "size_bytes": 724
+      }
+     ],
+     "is_current_final": true
+    }
+   ],
+   "page": 1,
+   "size": 50,
+   "total": 1
+  }
+ },
+ "student /teams/20/marks": {
+  "status": 200,
+  "body": {
+   "assignment": {
+    "id": 2,
+    "title": "Problem set 1",
+    "course_id": 1
+   },
+   "team": {
+    "id": 20,
+    "name": "Individual 18"
+   },
+   "rubric": [
+    {
+     "criterion_id": 4,
+     "position": 1,
+     "title": "Correctness",
+     "max_points": "10.0",
+     "points": "8.5",
+     "comment": "Could be clearer."
+    },
+    {
+     "criterion_id": 5,
+     "position": 2,
+     "title": "Clarity",
+     "max_points": "10.0",
+     "points": "9.0",
+     "comment": "Well done."
+    }
+   ],
+   "overall_comment": "Good work overall.",
+   "team_mark": "17.5",
+   "max_mark": "20.0",
+   "adjustment_percent": null,
+   "adjustment_reason": null,
+   "my_mark": "17.5",
+   "released_at": "2026-10-22T01:15:19+05:30"
+  }
+ },
+ "student /notifications?page=1&size=20": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "id": 1173,
+     "event_type": "marks_released",
+     "title": "Marks released for Problem set 1",
+     "link": "/teams/1385/marks",
+     "course_id": 16,
+     "read": false,
+     "created_at": "2026-10-22T01:15:19+05:30"
+    },
+    {
+     "id": 872,
+     "event_type": "marks_released",
+     "title": "Marks released for Problem set 1",
+     "link": "/teams/930/marks",
+     "course_id": 11,
+     "read": false,
+     "created_at": "2026-10-22T01:15:19+05:30"
+    },
+    {
+     "id": 571,
+     "event_type": "marks_released",
+     "title": "Marks released for Problem set 1",
+     "link": "/teams/475/marks",
+     "course_id": 6,
+     "read": false,
+     "created_at": "2026-10-22T01:15:19+05:30"
+    },
+    {
+     "id": 1,
+     "event_type": "marks_released",
+     "title": "Marks released for Problem set 1",
+     "link": "/teams/20/marks",
+     "course_id": 1,
+     "read": false,
+     "created_at": "2026-10-22T01:15:19+05:30"
+    },
+    {
+     "id": 1174,
+     "event_type": "assignment_published",
+     "title": "New assignment in MA310: Problem set 2",
+     "link": "/courses/16",
+     "course_id": 16,
+     "read": true,
+     "created_at": "2026-10-20T01:15:19+05:30"
+    },
+    {
+     "id": 873,
+     "event_type": "assignment_published",
+     "title": "New assignment in ME305: Problem set 2",
+     "link": "/courses/11",
+     "course_id": 11,
+     "read": true,
+     "created_at": "2026-10-20T01:15:19+05:30"
+    },
+    {
+     "id": 572,
+     "event_type": "assignment_published",
+     "title": "New assignment in EE204: Problem set 2",
+     "link": "/courses/6",
+     "course_id": 6,
+     "read": true,
+     "created_at": "2026-10-20T01:15:19+05:30"
+    },
+    {
+     "id": 55,
+     "event_type": "assignment_published",
+     "title": "New assignment in CS301: Problem set 2",
+     "link": "/courses/1",
+     "course_id": 1,
+     "read": false,
+     "created_at": "2026-10-20T01:15:19+05:30"
+    }
+   ],
+   "page": 1,
+   "size": 20,
+   "total": 8
+  }
+ },
+ "student /users/me/courses?page=1&size=50": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "id": 1,
+     "code": "CS301",
+     "term": "Jul-Nov 2026",
+     "title": "Software Engineering",
+     "department": {
+      "id": 1,
+      "code": "CSE",
+      "name": "Computer Science and Engineering"
+     },
+     "teachers": [
+      {
+       "id": 3,
+       "name": "Dr. Kavya Menon"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "student",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 6,
+     "code": "EE204",
+     "term": "Jul-Nov 2026",
+     "title": "Digital Circuits",
+     "department": {
+      "id": 2,
+      "code": "EE",
+      "name": "Electrical Engineering"
+     },
+     "teachers": [
+      {
+       "id": 8,
+       "name": "Dr. Guneet Sengupta"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "student",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 16,
+     "code": "MA310",
+     "term": "Jul-Nov 2026",
+     "title": "Optimisation",
+     "department": {
+      "id": 4,
+      "code": "MA",
+      "name": "Mathematics"
+     },
+     "teachers": [
+      {
+       "id": 3,
+       "name": "Dr. Kavya Menon"
+      },
+      {
+       "id": 10,
+       "name": "Dr. Mekhala Krishnamurthy"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "student",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 11,
+     "code": "ME305",
+     "term": "Jul-Nov 2026",
+     "title": "Design of Machine Elements",
+     "department": {
+      "id": 3,
+      "code": "ME",
+      "name": "Mechanical Engineering"
+     },
+     "teachers": [
+      {
+       "id": 13,
+       "name": "Dr. Bhavna Shankar"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "student",
+     "assignment_count": 3,
+     "resource_count": 4
+    }
+   ],
+   "page": 1,
+   "size": 50,
+   "total": 4
+  }
+ },
+ "student /auth/config": {
+  "status": 200,
+  "body": {
+   "google_enabled": false,
+   "allowed_email_domain": "iitdh.ac.in",
+   "auth_mode": "demo",
+   "csrf_header": "X-Unison-Client"
+  }
+ },
+ "student /users/me/deletion": {
+  "status": 200,
+  "body": {
+   "running_courses": 4,
+   "active_teams": 8,
+   "grace_days": 7,
+   "can_delete": true
+  }
+ },
+ "student /users/me/notification-preferences?size=50": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "event_type": "join_request_received",
+     "label": "Join request received",
+     "email_enabled": true
+    },
+    {
+     "event_type": "enrolment_approved",
+     "label": "Join request approved",
+     "email_enabled": true
+    },
+    {
+     "event_type": "enrolment_rejected",
+     "label": "Join request rejected",
+     "email_enabled": true
+    },
+    {
+     "event_type": "resources_published",
+     "label": "New resources published",
+     "email_enabled": true
+    },
+    {
+     "event_type": "assignment_published",
+     "label": "New assignment published",
+     "email_enabled": true
+    },
+    {
+     "event_type": "deadline_extended",
+     "label": "Deadline extended",
+     "email_enabled": true
+    }
+   ],
+   "page": 1,
+   "size": 50,
+   "total": 6
+  }
+ },
+ "teacher /users/me": {
+  "status": 200,
+  "body": {
+   "id": 3,
+   "name": "Dr. Kavya Menon",
+   "role": "teacher",
+   "status": "active",
+   "emails": [
+    {
+     "id": 3,
+     "email": "demo.teacher@example.com",
+     "is_primary": true,
+     "verified": true
+    }
+   ],
+   "has_password": true,
+   "google_linked": false,
+   "must_change_password": false,
+   "created_at": "2026-08-31T01:15:19+05:30"
+  }
+ },
+ "teacher /notifications/unread-count": {
+  "status": 200,
+  "body": {
+   "unread": 0
+  }
+ },
+ "teacher /dashboards/teacher": {
+  "status": 200,
+  "body": {
+   "unread_notifications": 0,
+   "notifications": [],
+   "courses": [
+    {
+     "id": 1,
+     "code": "CS301",
+     "title": "Software Engineering",
+     "term": "Jul-Nov 2026",
+     "students": 60,
+     "pending_join_requests": 3
+    },
+    {
+     "id": 16,
+     "code": "MA310",
+     "title": "Optimisation",
+     "term": "Jul-Nov 2026",
+     "students": 60,
+     "pending_join_requests": 3
+    }
+   ],
+   "assignments": [
+    {
+     "id": 3,
+     "title": "Problem set 2",
+     "kind": "individual",
+     "course": {
+      "id": 1,
+      "code": "CS301",
+      "title": "Software Engineering",
+      "term": "Jul-Nov 2026"
+     },
+     "due_at": "2026-11-13T01:15:19+05:30",
+     "status": "published",
+     "teams": 18,
+     "with_final": 0,
+     "without_final": 18,
+     "reviewed": 0,
+     "released": 0
+    },
+    {
+     "id": 48,
+     "title": "Problem set 2",
+     "kind": "individual",
+     "course": {
+      "id": 16,
+      "code": "MA310",
+      "title": "Optimisation",
+      "term": "Jul-Nov 2026"
+     },
+     "due_at": "2026-11-13T01:15:19+05:30",
+     "status": "published",
+     "teams": 18,
+     "with_final": 0,
+     "without_final": 18,
+     "reviewed": 0,
+     "released": 0
+    },
+    {
+     "id": 1,
+     "title": "Course project",
+     "kind": "group",
+     "course": {
+      "id": 1,
+      "code": "CS301",
+      "title": "Software Engineering",
+      "term": "Jul-Nov 2026"
+     },
+     "due_at": "2026-11-09T01:15:19+05:30",
+     "status": "published",
+     "teams": 19,
+     "with_final": 10,
+     "without_final": 9,
+     "reviewed": 0,
+     "released": 0
+    },
+    {
+     "id": 46,
+     "title": "Course project",
+     "kind": "group",
+     "course": {
+      "id": 16,
+      "code": "MA310",
+      "title": "Optimisation",
+      "term": "Jul-Nov 2026"
+     },
+     "due_at": "2026-10-25T01:15:19+05:30",
+     "status": "closed",
+     "teams": 19,
+     "with_final": 19,
+     "without_final": 0,
+     "reviewed": 19,
+     "released": 19
+    },
+    {
+     "id": 2,
+     "title": "Problem set 1",
+     "kind": "individual",
+     "course": {
+      "id": 1,
+      "code": "CS301",
+      "title": "Software Engineering",
+      "term": "Jul-Nov 2026"
+     },
+     "due_at": "2026-10-18T01:15:19+05:30",
+     "status": "closed",
+     "teams": 54,
+     "with_final": 54,
+     "without_final": 0,
+     "reviewed": 54,
+     "released": 54
+    },
+    {
+     "id": 47,
+     "title": "Problem set 1",
+     "kind": "individual",
+     "course": {
+      "id": 16,
+      "code": "MA310",
+      "title": "Optimisation",
+      "term": "Jul-Nov 2026"
+     },
+     "due_at": "2026-10-18T01:15:19+05:30",
+     "status": "closed",
+     "teams": 54,
+     "with_final": 54,
+     "without_final": 0,
+     "reviewed": 54,
+     "released": 54
+    }
+   ]
+  }
+ },
+ "teacher /courses/1/join-requests?size=3": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "id": 64,
+     "user": {
+      "id": 179,
+      "name": "Girish Dugal"
+     },
+     "email": "girish.dugal@example.com",
+     "requested_at": "2026-10-27T04:25:01+05:30",
+     "status": "requested"
+    },
+    {
+     "id": 62,
+     "user": {
+      "id": 58,
+      "name": "Unnati Garde"
+     },
+     "email": "unnati.garde@example.com",
+     "requested_at": "2026-10-27T04:31:30+05:30",
+     "status": "requested"
+    },
+    {
+     "id": 63,
+     "user": {
+      "id": 120,
+      "name": "Jagrati Sharaf"
+     },
+     "email": "jagrati.sharaf@example.com",
+     "requested_at": "2026-10-28T00:57:48+05:30",
+     "status": "requested"
+    }
+   ],
+   "page": 1,
+   "size": 3,
+   "total": 3
+  }
+ },
+ "teacher /courses/16/join-requests?size=3": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "id": 1024,
+     "user": {
+      "id": 34,
+      "name": "Vedika Shukla"
+     },
+     "email": "vedika.shukla@example.com",
+     "requested_at": "2026-10-27T12:13:11+05:30",
+     "status": "requested"
+    },
+    {
+     "id": 1025,
+     "user": {
+      "id": 272,
+      "name": "Bishakha Chand"
+     },
+     "email": "bishakha.chand@example.com",
+     "requested_at": "2026-10-27T18:51:30+05:30",
+     "status": "requested"
+    },
+    {
+     "id": 1023,
+     "user": {
+      "id": 175,
+      "name": "Jai Luthra"
+     },
+     "email": "jai.luthra@example.com",
+     "requested_at": "2026-10-28T14:55:37+05:30",
+     "status": "requested"
+    }
+   ],
+   "page": 1,
+   "size": 3,
+   "total": 3
+  }
+ },
+ "teacher /users/me/courses?page=1&size=12": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "id": 1,
+     "code": "CS301",
+     "term": "Jul-Nov 2026",
+     "title": "Software Engineering",
+     "department": {
+      "id": 1,
+      "code": "CSE",
+      "name": "Computer Science and Engineering"
+     },
+     "teachers": [
+      {
+       "id": 3,
+       "name": "Dr. Kavya Menon"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "teacher",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 16,
+     "code": "MA310",
+     "term": "Jul-Nov 2026",
+     "title": "Optimisation",
+     "department": {
+      "id": 4,
+      "code": "MA",
+      "name": "Mathematics"
+     },
+     "teachers": [
+      {
+       "id": 3,
+       "name": "Dr. Kavya Menon"
+      },
+      {
+       "id": 10,
+       "name": "Dr. Mekhala Krishnamurthy"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "teacher",
+     "assignment_count": 3,
+     "resource_count": 4
+    }
+   ],
+   "page": 1,
+   "size": 12,
+   "total": 2
+  }
+ },
+ "teacher /courses/1": {
+  "status": 200,
+  "body": {
+   "id": 1,
+   "code": "CS301",
+   "term": "Jul-Nov 2026",
+   "title": "Software Engineering",
+   "department": {
+    "id": 1,
+    "code": "CSE",
+    "name": "Computer Science and Engineering"
+   },
+   "teachers": [
+    {
+     "id": 3,
+     "name": "Dr. Kavya Menon"
+    }
+   ],
+   "join_requests_open": true,
+   "archived": false,
+   "my_status": "teacher",
+   "assignment_count": 3,
+   "resource_count": 4,
+   "description": "Software Engineering: lectures, assignments and a team project. Invented demo course.",
+   "my_enrolment": {
+    "role": "teacher",
+    "joined_at": "2026-09-10T01:15:19+05:30",
+    "via": "invitation",
+    "decided_by": {
+     "id": 2,
+     "name": "Demo Admin"
+    }
+   },
+   "student_count": 60,
+   "assignments": [
+    {
+     "id": 2,
+     "title": "Problem set 1",
+     "kind": "individual",
+     "due_at": "2026-10-18T01:15:19+05:30"
+    },
+    {
+     "id": 1,
+     "title": "Course project",
+     "kind": "group",
+     "due_at": "2026-11-09T01:15:19+05:30"
+    },
+    {
+     "id": 3,
+     "title": "Problem set 2",
+     "kind": "individual",
+     "due_at": "2026-11-13T01:15:19+05:30"
+    }
+   ],
+   "created_at": "2026-09-10T01:15:19+05:30"
+  }
+ },
+ "teacher /courses/1/resources?status=published&size=50": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "id": 4,
+     "course_id": 1,
+     "title": "Problem set hints",
+     "description": null,
+     "kind": "link",
+     "file_name": null,
+     "mime_type": null,
+     "size_bytes": null,
+     "url": "https://example.com/cs301/3",
+     "status": "published",
+     "published_at": "2026-10-05T01:15:19+05:30",
+     "created_by": {
+      "id": 3,
+      "name": "Dr. Kavya Menon"
+     },
+     "created_at": "2026-10-05T01:15:19+05:30"
+    },
+    {
+     "id": 3,
+     "course_id": 1,
+     "title": "Lecture 2 notes",
+     "description": null,
+     "kind": "file",
+     "file_name": "lecture-2-notes.pdf",
+     "mime_type": "application/pdf",
+     "size_bytes": 695,
+     "url": null,
+     "status": "published",
+     "published_at": "2026-09-30T01:15:19+05:30",
+     "created_by": {
+      "id": 3,
+      "name": "Dr. Kavya Menon"
+     },
+     "created_at": "2026-09-30T01:15:19+05:30"
+    },
+    {
+     "id": 2,
+     "course_id": 1,
+     "title": "Lecture 1 slides",
+     "description": null,
+     "kind": "file",
+     "file_name": "lecture-1-slides.pdf",
+     "mime_type": "application/pdf",
+     "size_bytes": 696,
+     "url": null,
+     "status": "published",
+     "published_at": "2026-09-25T01:15:19+05:30",
+     "created_by": {
+      "id": 3,
+      "name": "Dr. Kavya Menon"
+     },
+     "created_at": "2026-09-25T01:15:19+05:30"
+    },
+    {
+     "id": 1,
+     "course_id": 1,
+     "title": "Course outline",
+     "description": null,
+     "kind": "file",
+     "file_name": "course-outline.pdf",
+     "mime_type": "application/pdf",
+     "size_bytes": 694,
+     "url": null,
+     "status": "published",
+     "published_at": "2026-09-20T01:15:19+05:30",
+     "created_by": {
+      "id": 3,
+      "name": "Dr. Kavya Menon"
+     },
+     "created_at": "2026-09-20T01:15:19+05:30"
+    }
+   ],
+   "page": 1,
+   "size": 50,
+   "total": 4
+  }
+ },
+ "teacher /courses/1/assignments?page=1&size=50": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "id": 2,
+     "course_id": 1,
+     "title": "Problem set 1",
+     "kind": "individual",
+     "min_team": 1,
+     "max_team": 1,
+     "due_at": "2026-10-18T01:15:19+05:30",
+     "status": "closed",
+     "teams_locked": false,
+     "total_points": "20.0",
+     "my_team": null
+    },
+    {
+     "id": 1,
+     "course_id": 1,
+     "title": "Course project",
+     "kind": "group",
+     "min_team": 2,
+     "max_team": 4,
+     "due_at": "2026-11-09T01:15:19+05:30",
+     "status": "published",
+     "teams_locked": false,
+     "total_points": "50.0",
+     "my_team": null
+    },
+    {
+     "id": 3,
+     "course_id": 1,
+     "title": "Problem set 2",
+     "kind": "individual",
+     "min_team": 1,
+     "max_team": 1,
+     "due_at": "2026-11-13T01:15:19+05:30",
+     "status": "published",
+     "teams_locked": false,
+     "total_points": "20.0",
+     "my_team": null
+    }
+   ],
+   "page": 1,
+   "size": 50,
+   "total": 3
+  }
+ },
+ "teacher /courses/1/notification-rules?size=50": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "event_type": "join_request_received",
+     "label": "Join request received",
+     "email_members": true,
+     "email_teachers": true
+    },
+    {
+     "event_type": "enrolment_approved",
+     "label": "Join request approved",
+     "email_members": true,
+     "email_teachers": true
+    },
+    {
+     "event_type": "enrolment_rejected",
+     "label": "Join request rejected",
+     "email_members": true,
+     "email_teachers": true
+    },
+    {
+     "event_type": "resources_published",
+     "label": "New resources published",
+     "email_members": true,
+     "email_teachers": true
+    },
+    {
+     "event_type": "assignment_published",
+     "label": "New assignment published",
+     "email_members": true,
+     "email_teachers": true
+    },
+    {
+     "event_type": "deadline_extended",
+     "label": "Deadline extended",
+     "email_members": true,
+     "email_teachers": true
+    }
+   ],
+   "page": 1,
+   "size": 50,
+   "total": 6
+  }
+ },
+ "teacher /courses/1/invitations?status=pending&size=1": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "id": 12,
+     "kind": "course",
+     "email": "invitee.cs301.2@example.com",
+     "role": "student",
+     "status": "pending",
+     "course_id": 1,
+     "team_id": null,
+     "invited_by": {
+      "id": 3,
+      "name": "Dr. Kavya Menon"
+     },
+     "expires_at": "2026-11-04T01:15:19+05:30",
+     "created_at": "2026-10-28T01:15:19+05:30"
+    }
+   ],
+   "page": 1,
+   "size": 1,
+   "total": 2
+  }
+ },
+ "teacher /courses/1/resources?page=1&size=50": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "id": 4,
+     "course_id": 1,
+     "title": "Problem set hints",
+     "description": null,
+     "kind": "link",
+     "file_name": null,
+     "mime_type": null,
+     "size_bytes": null,
+     "url": "https://example.com/cs301/3",
+     "status": "published",
+     "published_at": "2026-10-05T01:15:19+05:30",
+     "created_by": {
+      "id": 3,
+      "name": "Dr. Kavya Menon"
+     },
+     "created_at": "2026-10-05T01:15:19+05:30"
+    },
+    {
+     "id": 3,
+     "course_id": 1,
+     "title": "Lecture 2 notes",
+     "description": null,
+     "kind": "file",
+     "file_name": "lecture-2-notes.pdf",
+     "mime_type": "application/pdf",
+     "size_bytes": 695,
+     "url": null,
+     "status": "published",
+     "published_at": "2026-09-30T01:15:19+05:30",
+     "created_by": {
+      "id": 3,
+      "name": "Dr. Kavya Menon"
+     },
+     "created_at": "2026-09-30T01:15:19+05:30"
+    },
+    {
+     "id": 2,
+     "course_id": 1,
+     "title": "Lecture 1 slides",
+     "description": null,
+     "kind": "file",
+     "file_name": "lecture-1-slides.pdf",
+     "mime_type": "application/pdf",
+     "size_bytes": 696,
+     "url": null,
+     "status": "published",
+     "published_at": "2026-09-25T01:15:19+05:30",
+     "created_by": {
+      "id": 3,
+      "name": "Dr. Kavya Menon"
+     },
+     "created_at": "2026-09-25T01:15:19+05:30"
+    },
+    {
+     "id": 1,
+     "course_id": 1,
+     "title": "Course outline",
+     "description": null,
+     "kind": "file",
+     "file_name": "course-outline.pdf",
+     "mime_type": "application/pdf",
+     "size_bytes": 694,
+     "url": null,
+     "status": "published",
+     "published_at": "2026-09-20T01:15:19+05:30",
+     "created_by": {
+      "id": 3,
+      "name": "Dr. Kavya Menon"
+     },
+     "created_at": "2026-09-20T01:15:19+05:30"
+    },
+    {
+     "id": 5,
+     "course_id": 1,
+     "title": "Reading list",
+     "description": null,
+     "kind": "link",
+     "file_name": null,
+     "mime_type": null,
+     "size_bytes": null,
+     "url": "https://example.com/cs301/4",
+     "status": "draft",
+     "published_at": null,
+     "created_by": {
+      "id": 3,
+      "name": "Dr. Kavya Menon"
+     },
+     "created_at": "2026-10-10T01:15:19+05:30"
+    }
+   ],
+   "page": 1,
+   "size": 50,
+   "total": 5
+  }
+ },
+ "teacher /courses/1/join-requests?page=1&size=50": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "id": 64,
+     "user": {
+      "id": 179,
+      "name": "Girish Dugal"
+     },
+     "email": "girish.dugal@example.com",
+     "requested_at": "2026-10-27T04:25:01+05:30",
+     "status": "requested"
+    },
+    {
+     "id": 62,
+     "user": {
+      "id": 58,
+      "name": "Unnati Garde"
+     },
+     "email": "unnati.garde@example.com",
+     "requested_at": "2026-10-27T04:31:30+05:30",
+     "status": "requested"
+    },
+    {
+     "id": 63,
+     "user": {
+      "id": 120,
+      "name": "Jagrati Sharaf"
+     },
+     "email": "jagrati.sharaf@example.com",
+     "requested_at": "2026-10-28T00:57:48+05:30",
+     "status": "requested"
+    }
+   ],
+   "page": 1,
+   "size": 50,
+   "total": 3
+  }
+ },
+ "teacher /courses/1/members?status=active&page=1&size=50": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "user": {
+      "id": 3,
+      "name": "Dr. Kavya Menon"
+     },
+     "email": "demo.teacher@example.com",
+     "role": "teacher",
+     "status": "active",
+     "joined_at": "2026-09-10T01:15:19+05:30"
+    },
+    {
+     "user": {
+      "id": 238,
+      "name": "Aachal Brar"
+     },
+     "email": "aachal.brar@example.com",
+     "role": "student",
+     "status": "active",
+     "joined_at": "2026-09-15T01:15:19+05:30"
+    },
+    {
+     "user": {
+      "id": 163,
+      "name": "Amrita Kaur"
+     },
+     "email": "amrita.kaur@example.com",
+     "role": "student",
+     "status": "active",
+     "joined_at": "2026-09-15T01:15:19+05:30"
+    },
+    {
+     "user": {
+      "id": 31,
+      "name": "Amruta Andra"
+     },
+     "email": "amruta.andra@example.com",
+     "role": "student",
+     "status": "active",
+     "joined_at": "2026-09-15T01:15:19+05:30"
+    },
+    {
+     "user": {
+      "id": 293,
+      "name": "Ansh Krishnan"
+     },
+     "email": "ansh.krishnan@example.com",
+     "role": "student",
+     "status": "active",
+     "joined_at": "2026-09-15T01:15:19+05:30"
+    },
+    {
+     "user": {
+      "id": 55,
+      "name": "Atharv Uppal"
+     },
+     "email": "atharv.uppal@example.com",
+     "role": "student",
+     "status": "active",
+     "joined_at": "2026-09-15T01:15:19+05:30"
+    }
+   ],
+   "page": 1,
+   "size": 50,
+   "total": 6
+  }
+ },
+ "teacher /assignments/1/teams?page=1&size=50": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "id": 1,
+     "name": "Byte Builders",
+     "assignment_id": 1,
+     "course_id": 1,
+     "kind": "group",
+     "min_team": 2,
+     "max_team": 4,
+     "closed": false,
+     "created_by": 18,
+     "members": [
+      {
+       "user": {
+        "id": 18,
+        "name": "Sandeep M"
+       },
+       "email": "demo.student@example.com",
+       "status": "active",
+       "joined_at": "2026-10-22T01:15:19+05:30"
+      },
+      {
+       "user": {
+        "id": 19,
+        "name": "Km Shristi Singh"
+       },
+       "email": "shristi.demo@example.com",
+       "status": "active",
+       "joined_at": "2026-10-22T01:15:19+05:30"
+      },
+      {
+       "user": {
+        "id": 20,
+        "name": "Tirtho Paul"
+       },
+       "email": "tirtho.demo@example.com",
+       "status": "active",
+       "joined_at": "2026-10-22T01:15:19+05:30"
+      }
+     ],
+     "pending_invitations": [],
+     "places_left": 0,
+     "has_final": true,
+     "state": "final_submitted"
+    },
+    {
+     "id": 16,
+     "name": "Comet Makers",
+     "assignment_id": 1,
+     "course_id": 1,
+     "kind": "group",
+     "min_team": 2,
+     "max_team": 4,
+     "closed": false,
+     "created_by": 69,
+     "members": [
+      {
+       "user": {
+        "id": 55,
+        "name": "Atharv Uppal"
+       },
+       "email": "atharv.uppal@example.com",
+       "status": "active",
+       "joined_at": "2026-10-22T01:15:19+05:30"
+      },
+      {
+       "user": {
+        "id": 69,
+        "name": "Rachit Padmanabhan"
+       },
+       "email": "rachit.padmanabhan@example.com",
+       "status": "active",
+       "joined_at": "2026-10-22T01:15:19+05:30"
+      },
+      {
+       "user": {
+        "id": 233,
+        "name": "Vansha Verma"
+       },
+       "email": "vansha.verma@example.com",
+       "status": "active",
+       "joined_at": "2026-10-22T01:15:19+05:30"
+      }
+     ],
+     "pending_invitations": [],
+     "places_left": 1,
+     "has_final": false,
+     "state": "drafts"
+    },
+    {
+     "id": 18,
+     "name": "Helix Labs",
+     "assignment_id": 1,
+     "course_id": 1,
+     "kind": "group",
+     "min_team": 2,
+     "max_team": 4,
+     "closed": false,
+     "created_by": 223,
+     "members": [
+      {
+       "user": {
+        "id": 193,
+        "name": "Daksha Kamdar"
+       },
+       "email": "daksha.kamdar@example.com",
+       "status": "active",
+       "joined_at": "2026-10-22T01:15:19+05:30"
+      },
+      {
+       "user": {
+        "id": 223,
+        "name": "Nathan Wason"
+       },
+       "email": "nathan.wason@example.com",
+       "status": "active",
+       "joined_at": "2026-10-22T01:15:19+05:30"
+      },
+      {
+       "user": {
+        "id": 278,
+        "name": "Vedant Yadav"
+       },
+       "email": "vedant.yadav@example.com",
+       "status": "active",
+       "joined_at": "2026-10-22T01:15:19+05:30"
+      }
+     ],
+     "pending_invitations": [],
+     "places_left": 1,
+     "has_final": false,
+     "state": "drafts"
+    },
+    {
+     "id": 5,
+     "name": "Helix Pioneers",
+     "assignment_id": 1,
+     "course_id": 1,
+     "kind": "group",
+     "min_team": 2,
+     "max_team": 4,
+     "closed": false,
+     "created_by": 248,
+     "members": [
+      {
+       "user": {
+        "id": 183,
+        "name": "Hritik Bala"
+       },
+       "email": "hritik.bala@example.com",
+       "status": "active",
+       "joined_at": "2026-10-22T01:15:19+05:30"
+      },
+      {
+       "user": {
+        "id": 248,
+        "name": "Jagdish Natt"
+       },
+       "email": "jagdish.natt@example.com",
+       "status": "active",
+       "joined_at": "2026-10-22T01:15:19+05:30"
+      },
+      {
+       "user": {
+        "id": 253,
+        "name": "Zaid Gour"
+       },
+       "email": "zaid.gour@example.com",
+       "status": "active",
+       "joined_at": "2026-10-22T01:15:19+05:30"
+      }
+     ],
+     "pending_invitations": [],
+     "places_left": 1,
+     "has_final": true,
+     "state": "final_submitted"
+    },
+    {
+     "id": 13,
+     "name": "Nimbus Labs",
+     "assignment_id": 1,
+     "course_id": 1,
+     "kind": "group",
+     "min_team": 2,
+     "max_team": 4,
+     "closed": false,
+     "created_by": 118,
+     "members": [
+      {
+       "user": {
+        "id": 103,
+        "name": "Baljiwan Dass"
+       },
+       "email": "baljiwan.dass@example.com",
+       "status": "active",
+       "joined_at": "2026-10-22T01:15:19+05:30"
+      },
+      {
+       "user": {
+        "id": 118,
+        "name": "Jagvi Kaul"
+       },
+       "email": "jagvi.kaul@example.com",
+       "status": "active",
+       "joined_at": "2026-10-22T01:15:19+05:30"
+      },
+      {
+       "user": {
+        "id": 163,
+        "name": "Amrita Kaur"
+       },
+       "email": "amrita.kaur@example.com",
+       "status": "active",
+       "joined_at": "2026-10-22T01:15:19+05:30"
+      }
+     ],
+     "pending_invitations": [],
+     "places_left": 1,
+     "has_final": true,
+     "state": "final_submitted"
+    },
+    {
+     "id": 12,
+     "name": "Nimbus Squad",
+     "assignment_id": 1,
+     "course_id": 1,
+     "kind": "group",
+     "min_team": 2,
+     "max_team": 4,
+     "closed": false,
+     "created_by": 208,
+     "members": [
+      {
+       "user": {
+        "id": 148,
+        "name": "Urvi Tara"
+       },
+       "email": "urvi.tara@example.com",
+       "status": "active",
+       "joined_at": "2026-10-22T01:15:19+05:30"
+      },
+      {
+       "user": {
+        "id": 198,
+        "name": "Owen Kurian"
+       },
+       "email": "owen.kurian@example.com",
+       "status": "active",
+       "joined_at": "2026-10-22T01:15:19+05:30"
+      },
+      {
+       "user": {
+        "id": 208,
+        "name": "Liam Loke"
+       },
+       "email": "liam.loke@example.com",
+       "status": "active",
+       "joined_at": "2026-10-22T01:15:19+05:30"
+      }
+     ],
+     "pending_invitations": [],
+     "places_left": 1,
+     "has_final": false,
+     "state": "drafts"
+    }
+   ],
+   "page": 1,
+   "size": 50,
+   "total": 6
+  }
+ },
+ "teacher /users/me/courses?page=1&size=50": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "id": 1,
+     "code": "CS301",
+     "term": "Jul-Nov 2026",
+     "title": "Software Engineering",
+     "department": {
+      "id": 1,
+      "code": "CSE",
+      "name": "Computer Science and Engineering"
+     },
+     "teachers": [
+      {
+       "id": 3,
+       "name": "Dr. Kavya Menon"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "teacher",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 16,
+     "code": "MA310",
+     "term": "Jul-Nov 2026",
+     "title": "Optimisation",
+     "department": {
+      "id": 4,
+      "code": "MA",
+      "name": "Mathematics"
+     },
+     "teachers": [
+      {
+       "id": 3,
+       "name": "Dr. Kavya Menon"
+      },
+      {
+       "id": 10,
+       "name": "Dr. Mekhala Krishnamurthy"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "teacher",
+     "assignment_count": 3,
+     "resource_count": 4
+    }
+   ],
+   "page": 1,
+   "size": 50,
+   "total": 2
+  }
+ },
+ "teacher /courses/16/join-requests?page=1&size=50": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "id": 1024,
+     "user": {
+      "id": 34,
+      "name": "Vedika Shukla"
+     },
+     "email": "vedika.shukla@example.com",
+     "requested_at": "2026-10-27T12:13:11+05:30",
+     "status": "requested"
+    },
+    {
+     "id": 1025,
+     "user": {
+      "id": 272,
+      "name": "Bishakha Chand"
+     },
+     "email": "bishakha.chand@example.com",
+     "requested_at": "2026-10-27T18:51:30+05:30",
+     "status": "requested"
+    },
+    {
+     "id": 1023,
+     "user": {
+      "id": 175,
+      "name": "Jai Luthra"
+     },
+     "email": "jai.luthra@example.com",
+     "requested_at": "2026-10-28T14:55:37+05:30",
+     "status": "requested"
+    }
+   ],
+   "page": 1,
+   "size": 50,
+   "total": 3
+  }
+ },
+ "teacher /assignments/2": {
+  "status": 200,
+  "body": {
+   "id": 2,
+   "course_id": 1,
+   "title": "Problem set 1",
+   "kind": "individual",
+   "min_team": 1,
+   "max_team": 1,
+   "due_at": "2026-10-18T01:15:19+05:30",
+   "status": "closed",
+   "teams_locked": false,
+   "total_points": "20.0",
+   "my_team": null,
+   "description": "Problem set 1 for CS301.",
+   "max_files": 5,
+   "requires_pdf": true,
+   "published_at": "2026-09-27T01:15:19+05:30",
+   "rubric": [
+    {
+     "id": 4,
+     "position": 1,
+     "title": "Correctness",
+     "max_points": "10.0"
+    },
+    {
+     "id": 5,
+     "position": 2,
+     "title": "Clarity",
+     "max_points": "10.0"
+    }
+   ]
+  }
+ },
+ "teacher /assignments/2/reviews?page=1&size=50": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "team": {
+      "id": 36,
+      "name": "Individual 103"
+     },
+     "member_count": 1,
+     "state": "marks_released",
+     "final_id": 27,
+     "version_number": 1,
+     "final_kind": "manual",
+     "below_min_size": false,
+     "submitted_at": "2026-10-14T21:25:37+05:30",
+     "review_status": "released",
+     "team_mark": "13.6",
+     "max_mark": "20.0"
+    },
+    {
+     "team": {
+      "id": 37,
+      "name": "Individual 108"
+     },
+     "member_count": 1,
+     "state": "marks_released",
+     "final_id": 28,
+     "version_number": 1,
+     "final_kind": "manual",
+     "below_min_size": false,
+     "submitted_at": "2026-10-13T00:34:23+05:30",
+     "review_status": "released",
+     "team_mark": "15.0",
+     "max_mark": "20.0"
+    },
+    {
+     "team": {
+      "id": 38,
+      "name": "Individual 118"
+     },
+     "member_count": 1,
+     "state": "marks_released",
+     "final_id": 29,
+     "version_number": 1,
+     "final_kind": "manual",
+     "below_min_size": false,
+     "submitted_at": "2026-10-14T20:20:16+05:30",
+     "review_status": "released",
+     "team_mark": "14.8",
+     "max_mark": "20.0"
+    },
+    {
+     "team": {
+      "id": 39,
+      "name": "Individual 123"
+     },
+     "member_count": 1,
+     "state": "marks_released",
+     "final_id": 30,
+     "version_number": 1,
+     "final_kind": "manual",
+     "below_min_size": false,
+     "submitted_at": "2026-10-16T07:53:42+05:30",
+     "review_status": "released",
+     "team_mark": "15.3",
+     "max_mark": "20.0"
+    },
+    {
+     "team": {
+      "id": 40,
+      "name": "Individual 128"
+     },
+     "member_count": 1,
+     "state": "marks_released",
+     "final_id": 31,
+     "version_number": 1,
+     "final_kind": "manual",
+     "below_min_size": false,
+     "submitted_at": "2026-10-13T21:21:20+05:30",
+     "review_status": "released",
+     "team_mark": "18.6",
+     "max_mark": "20.0"
+    },
+    {
+     "team": {
+      "id": 41,
+      "name": "Individual 133"
+     },
+     "member_count": 1,
+     "state": "marks_released",
+     "final_id": 32,
+     "version_number": 1,
+     "final_kind": "manual",
+     "below_min_size": false,
+     "submitted_at": "2026-10-14T22:24:22+05:30",
+     "review_status": "released",
+     "team_mark": "14.3",
+     "max_mark": "20.0"
+    }
+   ],
+   "page": 1,
+   "size": 50,
+   "total": 6
+  }
+ },
+ "teacher /ai/status": {
+  "status": 200,
+  "body": {
+   "enabled": true,
+   "provider": "fake",
+   "model": "fake-model",
+   "max_chars": 12000,
+   "requests_per_submission": 3,
+   "daily_cap_per_final": 3
+  }
+ },
+ "teacher /teams/36/review": {
+  "status": 200,
+  "body": {
+   "team": {
+    "id": 36,
+    "name": "Individual 103"
+   },
+   "assignment": {
+    "id": 2,
+    "title": "Problem set 1",
+    "course_id": 1
+   },
+   "final": {
+    "id": 27,
+    "version_id": 71,
+    "version_number": 1,
+    "submitted_by": {
+     "id": 103,
+     "name": "Baljiwan Dass"
+    },
+    "kind": "manual",
+    "below_min_size": false,
+    "submitted_at": "2026-10-14T21:25:37+05:30",
+    "replaced_at": null,
+    "files": [
+     {
+      "id": 125,
+      "file_name": "report.pdf",
+      "mime_type": "application/pdf",
+      "size_bytes": 728
+     }
+    ]
+   },
+   "replaced_finals": 0,
+   "contribution": [
+    {
+     "user": {
+      "id": 103,
+      "name": "Baljiwan Dass"
+     },
+     "status": "active",
+     "drafts_uploaded": 1,
+     "last_upload_at": "2026-10-14T21:20:37+05:30",
+     "submitted_current_final": true
+    }
+   ],
+   "rubric": [
+    {
+     "criterion_id": 4,
+     "position": 1,
+     "title": "Correctness",
+     "max_points": "10.0",
+     "points": "7.5",
+     "comment": "Good effort."
+    },
+    {
+     "criterion_id": 5,
+     "position": 2,
+     "title": "Clarity",
+     "max_points": "10.0",
+     "points": "6.1",
+     "comment": "Could be clearer."
+    }
+   ],
+   "overall_comment": "Meets the brief; see comments per criterion.",
+   "status": "released",
+   "released_at": "2026-10-22T01:15:19+05:30",
+   "team_mark": "13.6",
+   "max_mark": "20.0",
+   "members": [
+    {
+     "user": {
+      "id": 103,
+      "name": "Baljiwan Dass"
+     },
+     "adjustment_percent": null,
+     "reason": null,
+     "mark": "13.6"
+    }
+   ]
+  }
+ },
+ "teacher /teams/36/review/ai-drafts?size=10": {
+  "status": 200,
+  "body": {
+   "items": [],
+   "page": 1,
+   "size": 10,
+   "total": 0
+  }
+ },
+ "admin /users/me": {
+  "status": 200,
+  "body": {
+   "id": 2,
+   "name": "Demo Admin",
+   "role": "admin",
+   "status": "active",
+   "emails": [
+    {
+     "id": 2,
+     "email": "demo.admin@example.com",
+     "is_primary": true,
+     "verified": true
+    }
+   ],
+   "has_password": true,
+   "google_linked": false,
+   "must_change_password": false,
+   "created_at": "2026-08-31T01:15:19+05:30"
+  }
+ },
+ "admin /notifications/unread-count": {
+  "status": 200,
+  "body": {
+   "unread": 0
+  }
+ },
+ "admin /admin/audit-entries?size=4": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "id": 1,
+     "actor": {
+      "id": 1,
+      "name": "Platform Admin"
+     },
+     "as_admin": false,
+     "action": "first_admin_created",
+     "target_type": "users",
+     "target_id": 1,
+     "course_id": null,
+     "before": null,
+     "after": {
+      "email": "admin@example.com"
+     },
+     "created_at": "2026-10-30T01:15:19+05:30"
+    }
+   ],
+   "page": 1,
+   "size": 4,
+   "total": 1
+  }
+ },
+ "admin /admin/stats": {
+  "status": 200,
+  "body": {
+   "users": {
+    "students": 300,
+    "teachers": 15,
+    "admins": 2,
+    "suspended": 0,
+    "pending_deletion": 0
+   },
+   "departments": 5,
+   "courses": 20,
+   "active_courses": 20,
+   "courses_without_teacher": 0,
+   "assignments": 60,
+   "teams": 1820,
+   "drafts": 2398,
+   "finals": 1377,
+   "finals_this_week": 296,
+   "finals_last_week": 230,
+   "failed_emails_24h": 0
+  }
+ },
+ "admin /admin/users?size=5": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "id": 238,
+     "name": "Aachal Brar",
+     "email": "aachal.brar@example.com",
+     "role": "student",
+     "status": "active",
+     "created_at": "2026-08-31T01:15:19+05:30",
+     "deletion_requested_at": null
+    },
+    {
+     "id": 109,
+     "name": "Aadhya Divan",
+     "email": "aadhya.divan@example.com",
+     "role": "student",
+     "status": "active",
+     "created_at": "2026-08-31T01:15:19+05:30",
+     "deletion_requested_at": null
+    },
+    {
+     "id": 43,
+     "name": "Aadi Seth",
+     "email": "aadi.seth@example.com",
+     "role": "student",
+     "status": "active",
+     "created_at": "2026-08-31T01:15:19+05:30",
+     "deletion_requested_at": null
+    },
+    {
+     "id": 87,
+     "name": "Aahana Bhatnagar",
+     "email": "aahana.bhatnagar@example.com",
+     "role": "student",
+     "status": "active",
+     "created_at": "2026-08-31T01:15:19+05:30",
+     "deletion_requested_at": null
+    },
+    {
+     "id": 290,
+     "name": "Aarav Raghavan",
+     "email": "aarav.raghavan@example.com",
+     "role": "student",
+     "status": "active",
+     "created_at": "2026-08-31T01:15:19+05:30",
+     "deletion_requested_at": null
+    }
+   ],
+   "page": 1,
+   "size": 5,
+   "total": 317
+  }
+ },
+ "admin /admin/users?page=1&size=20": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "id": 238,
+     "name": "Aachal Brar",
+     "email": "aachal.brar@example.com",
+     "role": "student",
+     "status": "active",
+     "created_at": "2026-08-31T01:15:19+05:30",
+     "deletion_requested_at": null
+    },
+    {
+     "id": 109,
+     "name": "Aadhya Divan",
+     "email": "aadhya.divan@example.com",
+     "role": "student",
+     "status": "active",
+     "created_at": "2026-08-31T01:15:19+05:30",
+     "deletion_requested_at": null
+    },
+    {
+     "id": 43,
+     "name": "Aadi Seth",
+     "email": "aadi.seth@example.com",
+     "role": "student",
+     "status": "active",
+     "created_at": "2026-08-31T01:15:19+05:30",
+     "deletion_requested_at": null
+    },
+    {
+     "id": 87,
+     "name": "Aahana Bhatnagar",
+     "email": "aahana.bhatnagar@example.com",
+     "role": "student",
+     "status": "active",
+     "created_at": "2026-08-31T01:15:19+05:30",
+     "deletion_requested_at": null
+    },
+    {
+     "id": 290,
+     "name": "Aarav Raghavan",
+     "email": "aarav.raghavan@example.com",
+     "role": "student",
+     "status": "active",
+     "created_at": "2026-08-31T01:15:19+05:30",
+     "deletion_requested_at": null
+    },
+    {
+     "id": 75,
+     "name": "Abdul Chander",
+     "email": "abdul.chander@example.com",
+     "role": "student",
+     "status": "active",
+     "created_at": "2026-08-31T01:15:19+05:30",
+     "deletion_requested_at": null
+    },
+    {
+     "id": 304,
+     "name": "Abdul Sawhney",
+     "email": "abdul.sawhney@example.com",
+     "role": "student",
+     "status": "active",
+     "created_at": "2026-08-31T01:15:19+05:30",
+     "deletion_requested_at": null
+    },
+    {
+     "id": 274,
+     "name": "Abhimanyu Mangat",
+     "email": "abhimanyu.mangat@example.com",
+     "role": "student",
+     "status": "active",
+     "created_at": "2026-08-31T01:15:19+05:30",
+     "deletion_requested_at": null
+    },
+    {
+     "id": 136,
+     "name": "Aditya Srinivasan",
+     "email": "aditya.srinivasan@example.com",
+     "role": "student",
+     "status": "active",
+     "created_at": "2026-08-31T01:15:19+05:30",
+     "deletion_requested_at": null
+    },
+    {
+     "id": 296,
+     "name": "Advaith Balakrishnan",
+     "email": "advaith.balakrishnan@example.com",
+     "role": "student",
+     "status": "active",
+     "created_at": "2026-08-31T01:15:19+05:30",
+     "deletion_requested_at": null
+    },
+    {
+     "id": 171,
+     "name": "Advaith Loke",
+     "email": "advaith.loke@example.com",
+     "role": "student",
+     "status": "active",
+     "created_at": "2026-08-31T01:15:19+05:30",
+     "deletion_requested_at": null
+    },
+    {
+     "id": 174,
+     "name": "Advik Barad",
+     "email": "advik.barad@example.com",
+     "role": "student",
+     "status": "active",
+     "created_at": "2026-08-31T01:15:19+05:30",
+     "deletion_requested_at": null
+    },
+    {
+     "id": 132,
+     "name": "Advika Mukherjee",
+     "email": "advika.mukherjee@example.com",
+     "role": "student",
+     "status": "active",
+     "created_at": "2026-08-31T01:15:19+05:30",
+     "deletion_requested_at": null
+    },
+    {
+     "id": 266,
+     "name": "Adweta Gara",
+     "email": "adweta.gara@example.com",
+     "role": "student",
+     "status": "active",
+     "created_at": "2026-08-31T01:15:19+05:30",
+     "deletion_requested_at": null
+    },
+    {
+     "id": 317,
+     "name": "Adya Palan",
+     "email": "adya.palan@example.com",
+     "role": "student",
+     "status": "active",
+     "created_at": "2026-08-31T01:15:19+05:30",
+     "deletion_requested_at": null
+    },
+    {
+     "id": 70,
+     "name": "Adya Shetty",
+     "email": "adya.shetty@example.com",
+     "role": "student",
+     "status": "active",
+     "created_at": "2026-08-31T01:15:19+05:30",
+     "deletion_requested_at": null
+    },
+    {
+     "id": 89,
+     "name": "Alexander Bhandari",
+     "email": "alexander.bhandari@example.com",
+     "role": "student",
+     "status": "active",
+     "created_at": "2026-08-31T01:15:19+05:30",
+     "deletion_requested_at": null
+    },
+    {
+     "id": 126,
+     "name": "Alka Devi",
+     "email": "alka.devi@example.com",
+     "role": "student",
+     "status": "active",
+     "created_at": "2026-08-31T01:15:19+05:30",
+     "deletion_requested_at": null
+    },
+    {
+     "id": 163,
+     "name": "Amrita Kaur",
+     "email": "amrita.kaur@example.com",
+     "role": "student",
+     "status": "active",
+     "created_at": "2026-08-31T01:15:19+05:30",
+     "deletion_requested_at": null
+    },
+    {
+     "id": 31,
+     "name": "Amruta Andra",
+     "email": "amruta.andra@example.com",
+     "role": "student",
+     "status": "active",
+     "created_at": "2026-08-31T01:15:19+05:30",
+     "deletion_requested_at": null
+    }
+   ],
+   "page": 1,
+   "size": 20,
+   "total": 317
+  }
+ },
+ "admin /admin/users/4": {
+  "status": 200,
+  "body": {
+   "id": 4,
+   "name": "Dr. Ekaja Thakkar",
+   "email": "ekaja.thakkar@example.com",
+   "role": "teacher",
+   "status": "active",
+   "created_at": "2026-08-31T01:15:19+05:30",
+   "deletion_requested_at": null,
+   "emails": [
+    {
+     "id": 4,
+     "email": "ekaja.thakkar@example.com",
+     "is_primary": true,
+     "verified": true
+    }
+   ],
+   "enrolments": [
+    {
+     "course_id": 2,
+     "code": "CS302",
+     "title": "Database Systems",
+     "term": "Jul-Nov 2026",
+     "role": "teacher",
+     "status": "active"
+    },
+    {
+     "course_id": 17,
+     "code": "PH201",
+     "title": "Classical Mechanics",
+     "term": "Jul-Nov 2026",
+     "role": "teacher",
+     "status": "active"
+    }
+   ]
+  }
+ },
+ "admin /admin/courses?page=1&size=20": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "id": 1,
+     "code": "CS301",
+     "term": "Jul-Nov 2026",
+     "title": "Software Engineering",
+     "department": {
+      "id": 1,
+      "code": "CSE",
+      "name": "Computer Science and Engineering"
+     },
+     "teachers": [
+      {
+       "id": 3,
+       "name": "Dr. Kavya Menon"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "none",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 2,
+     "code": "CS302",
+     "term": "Jul-Nov 2026",
+     "title": "Database Systems",
+     "department": {
+      "id": 1,
+      "code": "CSE",
+      "name": "Computer Science and Engineering"
+     },
+     "teachers": [
+      {
+       "id": 4,
+       "name": "Dr. Ekaja Thakkar"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "none",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 3,
+     "code": "CS305",
+     "term": "Jul-Nov 2026",
+     "title": "Computer Networks",
+     "department": {
+      "id": 1,
+      "code": "CSE",
+      "name": "Computer Science and Engineering"
+     },
+     "teachers": [
+      {
+       "id": 5,
+       "name": "Dr. Udant Salvi"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "none",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 4,
+     "code": "CS310",
+     "term": "Jul-Nov 2026",
+     "title": "Machine Learning Basics",
+     "department": {
+      "id": 1,
+      "code": "CSE",
+      "name": "Computer Science and Engineering"
+     },
+     "teachers": [
+      {
+       "id": 6,
+       "name": "Dr. Ridhi Khatri"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "none",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 5,
+     "code": "EE201",
+     "term": "Jul-Nov 2026",
+     "title": "Signals and Systems",
+     "department": {
+      "id": 2,
+      "code": "EE",
+      "name": "Electrical Engineering"
+     },
+     "teachers": [
+      {
+       "id": 7,
+       "name": "Dr. Faris Choudhry"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "none",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 6,
+     "code": "EE204",
+     "term": "Jul-Nov 2026",
+     "title": "Digital Circuits",
+     "department": {
+      "id": 2,
+      "code": "EE",
+      "name": "Electrical Engineering"
+     },
+     "teachers": [
+      {
+       "id": 8,
+       "name": "Dr. Guneet Sengupta"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "none",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 7,
+     "code": "EE305",
+     "term": "Jul-Nov 2026",
+     "title": "Power Electronics",
+     "department": {
+      "id": 2,
+      "code": "EE",
+      "name": "Electrical Engineering"
+     },
+     "teachers": [
+      {
+       "id": 9,
+       "name": "Dr. Vritti Murthy"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "none",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 8,
+     "code": "EE310",
+     "term": "Jul-Nov 2026",
+     "title": "Embedded Systems Lab",
+     "department": {
+      "id": 2,
+      "code": "EE",
+      "name": "Electrical Engineering"
+     },
+     "teachers": [
+      {
+       "id": 10,
+       "name": "Dr. Mekhala Krishnamurthy"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "none",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 13,
+     "code": "MA201",
+     "term": "Jul-Nov 2026",
+     "title": "Linear Algebra",
+     "department": {
+      "id": 4,
+      "code": "MA",
+      "name": "Mathematics"
+     },
+     "teachers": [
+      {
+       "id": 15,
+       "name": "Dr. Januja Shenoy"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "none",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 14,
+     "code": "MA205",
+     "term": "Jul-Nov 2026",
+     "title": "Probability and Statistics",
+     "department": {
+      "id": 4,
+      "code": "MA",
+      "name": "Mathematics"
+     },
+     "teachers": [
+      {
+       "id": 16,
+       "name": "Dr. Gautam Rastogi"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "none",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 15,
+     "code": "MA301",
+     "term": "Jul-Nov 2026",
+     "title": "Numerical Methods",
+     "department": {
+      "id": 4,
+      "code": "MA",
+      "name": "Mathematics"
+     },
+     "teachers": [
+      {
+       "id": 17,
+       "name": "Dr. Jackson Sandal"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "none",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 16,
+     "code": "MA310",
+     "term": "Jul-Nov 2026",
+     "title": "Optimisation",
+     "department": {
+      "id": 4,
+      "code": "MA",
+      "name": "Mathematics"
+     },
+     "teachers": [
+      {
+       "id": 3,
+       "name": "Dr. Kavya Menon"
+      },
+      {
+       "id": 10,
+       "name": "Dr. Mekhala Krishnamurthy"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "none",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 9,
+     "code": "ME201",
+     "term": "Jul-Nov 2026",
+     "title": "Engineering Thermodynamics",
+     "department": {
+      "id": 3,
+      "code": "ME",
+      "name": "Mechanical Engineering"
+     },
+     "teachers": [
+      {
+       "id": 11,
+       "name": "Dr. Ishanvi Puri"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "none",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 10,
+     "code": "ME210",
+     "term": "Jul-Nov 2026",
+     "title": "Fluid Mechanics",
+     "department": {
+      "id": 3,
+      "code": "ME",
+      "name": "Mechanical Engineering"
+     },
+     "teachers": [
+      {
+       "id": 12,
+       "name": "Dr. Harini Chakraborty"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "none",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 11,
+     "code": "ME305",
+     "term": "Jul-Nov 2026",
+     "title": "Design of Machine Elements",
+     "department": {
+      "id": 3,
+      "code": "ME",
+      "name": "Mechanical Engineering"
+     },
+     "teachers": [
+      {
+       "id": 13,
+       "name": "Dr. Bhavna Shankar"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "none",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 12,
+     "code": "ME320",
+     "term": "Jul-Nov 2026",
+     "title": "Robotics Project",
+     "department": {
+      "id": 3,
+      "code": "ME",
+      "name": "Mechanical Engineering"
+     },
+     "teachers": [
+      {
+       "id": 14,
+       "name": "Dr. Dayamai Bakshi"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "none",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 17,
+     "code": "PH201",
+     "term": "Jul-Nov 2026",
+     "title": "Classical Mechanics",
+     "department": {
+      "id": 5,
+      "code": "PH",
+      "name": "Physics"
+     },
+     "teachers": [
+      {
+       "id": 4,
+       "name": "Dr. Ekaja Thakkar"
+      },
+      {
+       "id": 11,
+       "name": "Dr. Ishanvi Puri"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "none",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 18,
+     "code": "PH210",
+     "term": "Jul-Nov 2026",
+     "title": "Electromagnetism",
+     "department": {
+      "id": 5,
+      "code": "PH",
+      "name": "Physics"
+     },
+     "teachers": [
+      {
+       "id": 12,
+       "name": "Dr. Harini Chakraborty"
+      },
+      {
+       "id": 5,
+       "name": "Dr. Udant Salvi"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "none",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 19,
+     "code": "PH301",
+     "term": "Jul-Nov 2026",
+     "title": "Quantum Physics",
+     "department": {
+      "id": 5,
+      "code": "PH",
+      "name": "Physics"
+     },
+     "teachers": [
+      {
+       "id": 13,
+       "name": "Dr. Bhavna Shankar"
+      },
+      {
+       "id": 6,
+       "name": "Dr. Ridhi Khatri"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "none",
+     "assignment_count": 3,
+     "resource_count": 4
+    },
+    {
+     "id": 20,
+     "code": "PH320",
+     "term": "Jul-Nov 2026",
+     "title": "Computational Physics",
+     "department": {
+      "id": 5,
+      "code": "PH",
+      "name": "Physics"
+     },
+     "teachers": [
+      {
+       "id": 14,
+       "name": "Dr. Dayamai Bakshi"
+      },
+      {
+       "id": 7,
+       "name": "Dr. Faris Choudhry"
+      }
+     ],
+     "join_requests_open": true,
+     "archived": false,
+     "my_status": "none",
+     "assignment_count": 3,
+     "resource_count": 4
+    }
+   ],
+   "page": 1,
+   "size": 20,
+   "total": 20
+  }
+ },
+ "admin /departments?page=1&size=50": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "id": 1,
+     "code": "CSE",
+     "name": "Computer Science and Engineering"
+    },
+    {
+     "id": 2,
+     "code": "EE",
+     "name": "Electrical Engineering"
+    },
+    {
+     "id": 4,
+     "code": "MA",
+     "name": "Mathematics"
+    },
+    {
+     "id": 3,
+     "code": "ME",
+     "name": "Mechanical Engineering"
+    },
+    {
+     "id": 5,
+     "code": "PH",
+     "name": "Physics"
+    }
+   ],
+   "page": 1,
+   "size": 50,
+   "total": 5
+  }
+ },
+ "admin /admin/audit-entries?page=1&size=20": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "id": 1,
+     "actor": {
+      "id": 1,
+      "name": "Platform Admin"
+     },
+     "as_admin": false,
+     "action": "first_admin_created",
+     "target_type": "users",
+     "target_id": 1,
+     "course_id": null,
+     "before": null,
+     "after": {
+      "email": "admin@example.com"
+     },
+     "created_at": "2026-10-30T01:15:19+05:30"
+    }
+   ],
+   "page": 1,
+   "size": 20,
+   "total": 1
+  }
+ },
+ "admin /admin/settings?size=50": {
+  "status": 200,
+  "body": {
+   "items": [
+    {
+     "key": "allowed_email_domain",
+     "value": "iitdh.ac.in",
+     "default": "iitdh.ac.in",
+     "description": "Sign-up is open only to emails at this domain.",
+     "updated_at": "2026-10-30T01:15:18+05:30"
+    },
+    {
+     "key": "signups_per_ip_per_hour",
+     "value": 5,
+     "default": 5,
+     "description": "Sign-ups allowed from one IP address per hour.",
+     "updated_at": "2026-10-30T01:15:18+05:30"
+    },
+    {
+     "key": "join_requests_per_day",
+     "value": 10,
+     "default": 10,
+     "description": "Join requests one student can make per day.",
+     "updated_at": "2026-10-30T01:15:18+05:30"
+    },
+    {
+     "key": "ai_requests_per_submission",
+     "value": 3,
+     "default": 3,
+     "description": "AI drafts per final: the first and the regenerations.",
+     "updated_at": "2026-10-30T01:15:18+05:30"
+    },
+    {
+     "key": "ai_daily_cap_per_final",
+     "value": 3,
+     "default": 3,
+     "description": "AI drafts per course per day, per submitted final in the course.",
+     "updated_at": "2026-10-30T01:15:18+05:30"
+    }
+   ],
+   "page": 1,
+   "size": 50,
+   "total": 5
+  }
+ }
+}
