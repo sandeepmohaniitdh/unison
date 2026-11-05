@@ -23,7 +23,7 @@ from app.modules.admin.service import audit
 from app.modules.assignments.models import Assignment
 from app.modules.assignments.service import get_assignment
 from app.modules.invitations.models import Invitation
-from app.modules.notifications.service import notify
+from app.modules.notifications.service import notify, primary_email
 from app.modules.submissions.models import FinalSubmission, Submission, SubmissionVersion
 from app.modules.teams.models import Team, TeamMember
 from app.modules.users.models import User
@@ -180,7 +180,13 @@ def team_detail(db: Session, team: Team, viewer: User, now: datetime) -> dict:
         "closed": team.closed_at is not None,
         "created_by": team.created_by,
         "members": [
-            {"user": {"id": u.id, "name": u.name}, "status": m.status, "joined_at": m.joined_at} for m, u in members
+            {
+                "user": {"id": u.id, "name": u.name},
+                "email": primary_email(db, u.id),
+                "status": m.status,
+                "joined_at": m.joined_at,
+            }
+            for m, u in members
         ],
         "pending_invitations": pending,
         "places_left": max(0, assignment.max_team - active - pending_count),

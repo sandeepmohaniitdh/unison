@@ -365,6 +365,7 @@ def view(db: Session, inv: Invitation, user: User | None, now: datetime) -> dict
             "assignment_title": assignment.title,
             "due_at": assignment.due_at,
             "members": list(names),
+            "max_team": assignment.max_team,
         }
     problem = _problem(db, inv, user)
     return {

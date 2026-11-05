@@ -62,6 +62,9 @@ class Stats(BaseModel):
     teams: int
     drafts: int
     finals: int
+    finals_this_week: int = Field(description="Finals submitted in the last 7 days.")
+    finals_last_week: int = Field(description="Finals submitted 8 to 14 days ago.")
+    failed_emails_24h: int = Field(description="Emails that failed for good in the last 24 hours.")
 
 
 class AuditEntry(BaseModel):

@@ -1,0 +1,51 @@
+# Production add-on: HTTPS with Caddy, nothing else reachable from outside, no Mailpit
+# and no phpMyAdmin.
+#
+#   docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
+#
+# Needs a .env file with the production values (see .env.example and docs/DEPLOYMENT.md).
+
+services:
+  db:
+    ports: !reset []
+    restart: unless-stopped
+
+  backend:
+    ports: !reset []
+
+  # Real emails go through the SMTP service in .env, so Mailpit is not started.
+  mailpit:
+    profiles: ["local-only"]
+
+  # The database dashboard is for laptops only. On a server, reach the database
+  # through an SSH tunnel instead (docs/DEPLOYMENT.md).
+  phpmyadmin:
+    profiles: ["local-only"]
+
+  worker:
+    depends_on: !override
+      init:
+        condition: service_completed_successfully
+
+  frontend:
+    ports: !reset []
+
+  caddy:
+    image: caddy:2.11-alpine
+    environment:
+      DOMAIN: ${DOMAIN:?Set DOMAIN in .env, for example unison.example.org}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - frontend
+    restart: unless-stopped
+
+volumes:
+  caddy_data:
+  caddy_config:

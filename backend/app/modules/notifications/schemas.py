@@ -114,6 +114,7 @@ class TeacherCourse(DashCourse):
 class TeacherAssignment(BaseModel):
     id: int
     title: str
+    kind: Literal["individual", "group"]
     course: DashCourse
     due_at: IstDateTime
     status: Literal["draft", "published", "closed"]

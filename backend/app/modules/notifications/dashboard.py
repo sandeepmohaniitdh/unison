@@ -155,6 +155,7 @@ def teacher(db: Session, user: User, clock: Clock) -> dict:
             {
                 "id": a.id,
                 "title": a.title,
+                "kind": a.kind,
                 "course": _course(by_id[a.course_id]),
                 "due_at": a.due_at,
                 "status": a.status,

@@ -220,6 +220,12 @@ __marimo__/
 .streamlit/secrets.toml
 
 # Unison
+# Private settings (API keys, passwords) live only in .env files on your own machine.
+.env.*
+!.env.example
 node_modules/
 frontend/dist/
 .DS_Store
+frontend/coverage/
+# The Python "lib/" rule above must not hide the frontend's helpers
+!frontend/src/lib/

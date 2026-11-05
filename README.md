@@ -5,7 +5,7 @@ Course project for CS602C Advanced Software Development Lab, IIT Dharwad (2026),
 
 Unison is an LMS for one institute, built around group assignments. Administrators organise courses by department and assign teachers. Teachers publish notes and assignments and bring students in by email invitation or by approving join requests. Students form teams by inviting classmates, share private drafts, and any member submits one draft as the team's final. Every member and the teacher are notified in the app and by email, and the teacher sees only that final. Teachers give one mark per team, can adjust it for a member whose contribution differed, and release it; students then see their marks and comments. An optional AI feature drafts rubric-based feedback that the teacher reviews before anything reaches students.
 
-> **Status: backend complete (MS-3).** The API, database, migrations, seed data, background worker, tests and CI run with one `docker compose up`. The frontend follows in its own pull requests.
+> **Status: frontend connected (MS-4).** The web app, API, database, migrations, seed data, background worker, tests and CI run with one `docker compose up`. Open http://localhost:8080 and log in with a demo account.
 
 ## Links
 
@@ -18,6 +18,7 @@ Unison is an LMS for one institute, built around group assignments. Administrato
 | Prototype walkthrough video (MS-2) | [Watch on Google Drive](https://drive.google.com/file/d/139FEv3z5U7PNt7YEiOYTNQquafv_i0h-/view?usp=sharing) |
 | API description, OpenAPI 3 (MS-3) | [docs/openapi.yaml](docs/openapi.yaml) |
 | API guide and every endpoint (MS-3) | [docs/api/README.md](docs/api/README.md), [docs/api/ENDPOINTS.md](docs/api/ENDPOINTS.md) |
+| Keys, Google sign-in and running on a real server | [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) |
 
 ## Main features
 
@@ -36,18 +37,18 @@ All deadlines are in IST (Asia/Kolkata).
 
 | Layer | Choice |
 |---|---|
-| Frontend | React + Vite, served by nginx (in progress) |
+| Frontend | React 19 + Vite, plain JavaScript, served by nginx (which forwards `/api` to the backend) |
 | Backend | Python 3.12, FastAPI (modular monolith, 12 modules), REST under `/api/v1`, OpenAPI 3 YAML |
 | Database | MySQL 8.4, SQLAlchemy 2, Alembic migrations |
 | Background work | Worker container using MySQL as its job queue (email outbox, deadlines, invitation expiry, AI jobs, account deletion) |
 | Email | SMTP via a transactional outbox; Mailpit for local development |
 | AI | Gemini API or a local model through Ollama (both optional) |
-| Testing and CI | pytest with coverage against MySQL, Ruff, GitHub Actions |
-| Packaging | Docker Compose: `db`, `init`, `backend`, `worker`, `mailpit` (`frontend` to come) |
+| Testing and CI | pytest with coverage against MySQL, Ruff, Vitest with coverage, ESLint, GitHub Actions |
+| Packaging | Docker Compose: `db`, `init`, `backend`, `worker`, `frontend`, `mailpit`, `phpmyadmin` |
 
 ## How to run
 
-You need **Docker Desktop** (running) and Git. Nothing else: MySQL, Python and the mail server all run in containers.
+You need **Docker Desktop** (running) and Git. Nothing else: MySQL, Python, Node and the mail server all run in containers.
 
     git clone https://github.com/sandeepmohaniitdh/unison.git
     cd unison
@@ -57,16 +58,26 @@ The first start takes a few minutes. When `init` has finished (migrations, the f
 
 | Address | What |
 |---|---|
+| http://localhost:8080 | **The Unison web app** |
 | http://localhost:8000/api/v1/docs | Swagger UI: every endpoint, try them out |
 | http://localhost:8000/api/v1/health | `{"status": "ok", "database": "ok", ...}` |
 | http://localhost:8025 | Mailpit: every email the site sends lands here |
+| http://localhost:8081 | phpMyAdmin, the database dashboard: user `unison`, password `unison` (or `root` / `root`) |
 | `localhost:3307` | MySQL, user `unison`, password `unison` (for MySQL Workbench) |
+
+**Logging in to the app:** every seeded account uses the password `unison-demo`. Good ones to start with:
+
+| Email | Sees |
+|---|---|
+| `demo.student@example.com` | Student dashboard, CS301 with team Byte Builders, drafts, finals and marks |
+| `demo.teacher@example.com` | Teacher dashboard, course management, join requests and reviews for CS301 and MA310 |
+| `demo.admin@example.com` | Admin console: users, courses, departments, settings and the audit log |
 
 **Trying the API in Swagger:** click **Authorize**, type a demo email in `X-Demo-User` (for example `demo.student@example.com`, `demo.teacher@example.com` or `demo.admin@example.com`) and close. Every seeded account also logs in with the password `unison-demo`. The first administrator is `admin@example.com` with `unison-admin`, and must change the password at first login. More in the [API guide](docs/api/README.md).
 
 Stop with `Ctrl+C`. `docker compose down` removes the containers; `docker compose down -v` also deletes the database and uploads, so the next start seeds fresh data.
 
-Google sign-in and the AI feature are optional. Without their keys the site runs with password login and the AI button disabled. To try them, set `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`, or `AI_PROVIDER=gemini` and `GEMINI_API_KEY`, before `docker compose up`.
+Google sign-in and the AI feature are optional. Without their keys the site runs with password login and the AI button disabled (`AI_PROVIDER=fake` gives pretend AI suggestions for testing). To use real keys, copy `.env.example` to `.env` and fill them in: `docker compose` reads `.env` by itself, and `.env` is in `.gitignore`, so keys never reach GitHub. [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) explains the Google and Gemini setup and how to run Unison on a real server with HTTPS (`docker-compose.prod.yml`).
 
 ## Repository layout
 
@@ -80,9 +91,16 @@ Google sign-in and the AI feature are optional. Without their keys the site runs
 | `backend/app/seed/` | The synthetic dataset |
 | `backend/alembic/` | Database migrations |
 | `backend/tests/` | pytest tests (run against MySQL) |
+| `frontend/src/pages/` | One folder per area: public pages, dashboards, courses, teams, reviews, notifications, profile, admin |
+| `frontend/src/components/` | Shared components that reproduce the Figma design (`/dev/components` shows them all) |
+| `frontend/src/api/` | The API client (`client.js`) and the `useApi` hook every page uses |
+| `frontend/src/styles/tokens.css` | Colours, sizes and shadows from Figma, with the dark mode values |
+| `frontend/nginx.conf` | Serves the app and forwards `/api` to the backend |
 | `docs/openapi.yaml`, `docs/api/` | The OpenAPI description, the endpoint list and the API guide |
 | `db/init/` | Creates the `unison_test` database on first start |
-| `.github/workflows/ci.yml` | CI: lint, migrations, tests with coverage, OpenAPI check, full compose start |
+| `docker-compose.prod.yml`, `deploy/Caddyfile` | Production add-on: HTTPS with Caddy, only ports 80 and 443 open |
+| `.env.example` | Every private setting (keys, passwords); copy to `.env`, which Git ignores |
+| `.github/workflows/ci.yml` | CI: backend and frontend lint and tests with coverage, migrations, OpenAPI check, full compose start |
 
 ## Development
 
@@ -98,6 +116,14 @@ After changing a model, create a migration (the new file appears in `backend/ale
 
     docker compose run --rm --user root -v "${PWD}/backend:/app" backend alembic revision --autogenerate -m "what changed"
     docker compose run --rm init
+
+Frontend (from `frontend/`, with Node 22): `npm run dev` serves the app on http://localhost:5173 and forwards `/api` to a backend on port 8000 (for example the one from `docker compose up`).
+
+    npm ci
+    npm run dev
+    npm run lint
+    npm test                    # Vitest, in a simulated browser
+    npx vitest run --coverage   # coverage report in frontend/coverage/index.html
 
 After changing a route or schema, regenerate the API description (see [the API guide](docs/api/README.md#updating-the-yaml)) and commit `docs/openapi.yaml` and `docs/api/ENDPOINTS.md`.
 
