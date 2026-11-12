@@ -53,9 +53,12 @@ class Settings(BaseModel):
     ai_provider: Literal["none", "gemini", "ollama", "fake"] = "none"
     gemini_api_key: str = ""
     gemini_model: str = "gemini-flash-latest"
+    # Used when the main model is overloaded (HTTP 503), too slow or out of quota. Empty: no fallback.
+    gemini_fallback_model: str = "gemini-flash-lite-latest"
     ollama_url: str = "http://ollama:11434"
     ollama_model: str = "llama3.1:8b"
-    ai_timeout_seconds: float = 15.0
+    # Thinking models (gemini-flash-latest) often need more than 15 s for a whole report.
+    ai_timeout_seconds: float = 60.0
 
     seed_on_start: bool = True
     worker_interval_seconds: int = 30
