@@ -39,6 +39,9 @@ x-backend-env: &backend-env
   GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
   AI_PROVIDER: ${AI_PROVIDER:-none}
   GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+  GEMINI_MODEL: ${GEMINI_MODEL:-gemini-flash-latest}
+  GEMINI_FALLBACK_MODEL: ${GEMINI_FALLBACK_MODEL:-gemini-flash-lite-latest}
+  AI_TIMEOUT_SECONDS: ${AI_TIMEOUT_SECONDS:-60}
 
 services:
   db:

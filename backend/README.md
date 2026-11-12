@@ -37,6 +37,8 @@ Every setting is an environment variable with a default (`app/config.py`), so no
 | `ADMIN_EMAIL`, `ADMIN_PASSWORD` | `admin@example.com`, `unison-admin` | The first administrator |
 | `SEED_ON_START` | `true` | Load the demo data into an empty database |
 | `AI_PROVIDER` | `none` | `gemini` (with `GEMINI_API_KEY`), `ollama` or `fake` |
+| `GEMINI_MODEL`, `AI_TIMEOUT_SECONDS` | `gemini-flash-latest`, `60` | The Gemini model and how long to wait for it |
+| `GEMINI_FALLBACK_MODEL` | `gemini-flash-lite-latest` | Tried when the main model is busy, too slow or out of quota (empty: none) |
 | `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` | empty | Google sign-in, off when empty |
 | `TRUST_PROXY` | `false` | Trust `X-Forwarded-For` (only behind our nginx) |
 
