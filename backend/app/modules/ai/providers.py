@@ -17,7 +17,6 @@ import httpx
 
 from app.config import Settings
 
-
 log = logging.getLogger("unison.ai")
 
 # Waits (seconds) between attempts when Google is busy; None marks the last attempt.
