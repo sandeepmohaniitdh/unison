@@ -113,7 +113,7 @@ def run_case(data: dict, case: dict, model: Provider, live: bool) -> Result:
         SimpleNamespace(id=c["id"], title=c["title"], max_points=Decimal(str(c["max_points"])))
         for c in data["rubrics"][case["rubric"]]
     ]
-    assignment = SimpleNamespace(**data["assignment"])
+    assignment = SimpleNamespace(**data["assignments"][case["rubric"]])
 
     scripted = "scripted_reply" in case or "scripted_error" in case
     uses_model = live and case.get("live", True) and not scripted
