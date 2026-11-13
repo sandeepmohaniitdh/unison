@@ -363,10 +363,27 @@ def process(db: Session, row: AiFeedback, storage: LocalStorage, provider: Provi
         text, page_lengths = extract_text(storage.read_bytes(pdf.storage_key))
     except Exception:  # noqa: BLE001 - any parsing problem means "no readable text"
         text, page_lengths = "", []
+
+    report, facts = prepare_report(text, page_lengths, _team_members(db, team), team.name)
+    reply = provider.generate(SYSTEM_PROMPT, build_prompt(assignment, criteria, report))
+    suggestions = parse_reply(reply, criteria)
+    row.output = {
+        "suggestions": suggestions,
+        "injection_suspected": facts["injection_suspected"],
+        "truncated": facts["truncated"],
+        "pages_read": facts["pages_read"],
+        "pages_total": facts["pages_total"],
+    }
+    row.chars_read = len(report)
+    row.chars_total = facts["chars_total"]
+
+
+def prepare_report(text: str, page_lengths: list[int], members: list[Member], team_name: str) -> tuple[str, dict]:
+    """The report text the model may see: names removed, cut to MAX_CHARS. Also returns facts
+    about it (injection suspected, truncated, pages read). Used by the worker and the evaluation."""
     if not text.strip():
         raise ProviderError("PDF_UNREADABLE", "No text")
-
-    ids = identifiers(_team_members(db, team), team.name)
+    ids = identifiers(members, team_name)
     clean = redact(text, ids)
     if leftovers(clean, ids):
         raise ProviderError("REDACTION_FAILED", "Names remained after redaction")
@@ -377,8 +394,19 @@ def process(db: Session, row: AiFeedback, storage: LocalStorage, provider: Provi
             break
         total += length
         pages_read += 1
+    facts = {
+        "injection_suspected": looks_like_injection(text),
+        "truncated": len(clean) > MAX_CHARS,
+        "pages_read": pages_read,
+        "pages_total": len(page_lengths),
+        "chars_total": len(clean),
+    }
+    return report, facts
 
-    reply = provider.generate(SYSTEM_PROMPT, build_prompt(assignment, criteria, report))
+
+def parse_reply(reply, criteria) -> list[dict]:
+    """Check the model's reply against the rubric. Never trusted: a missing criterion or a wrong
+    shape is an error, marks are kept between 0 and each maximum, comments are cut to 300 characters."""
     try:
         parsed = _Reply.model_validate(reply)
     except ValidationError as exc:
@@ -392,15 +420,7 @@ def process(db: Session, row: AiFeedback, storage: LocalStorage, provider: Provi
         # Every mark is kept between 0 and the criterion's maximum, whatever the model says.
         points = min(max(Decimal(str(s.points)), Decimal(0)), c.max_points).quantize(Decimal("0.1"))
         suggestions.append({"criterion_id": c.id, "points": float(points), "comment": s.comment.strip()[:300]})
-    row.output = {
-        "suggestions": suggestions,
-        "injection_suspected": looks_like_injection(text),
-        "truncated": len(clean) > MAX_CHARS,
-        "pages_read": pages_read,
-        "pages_total": len(page_lengths),
-    }
-    row.chars_read = len(report)
-    row.chars_total = len(clean)
+    return suggestions
 
 
 def run_jobs(db: Session, storage: LocalStorage, provider: Provider | None, clock: Clock, limit: int = 5) -> int:
