@@ -5,7 +5,7 @@ Course project for CS602C Advanced Software Development Lab, IIT Dharwad (2026),
 
 Unison is an LMS for one institute, built around group assignments. Administrators organise courses by department and assign teachers. Teachers publish notes and assignments and bring students in by email invitation or by approving join requests. Students form teams by inviting classmates, share private drafts, and any member submits one draft as the team's final. Every member and the teacher are notified in the app and by email, and the teacher sees only that final. Teachers give one mark per team, can adjust it for a member whose contribution differed, and release it; students then see their marks and comments. An optional AI feature drafts rubric-based feedback that the teacher reviews before anything reaches students.
 
-> **Status: frontend connected (MS-4).** The web app, API, database, migrations, seed data, background worker, tests and CI run with one `docker compose up`. Open http://localhost:8080 and log in with a demo account.
+> **Status: feature complete (MS-5).** The web app, API, database, migrations, seed data, background worker, AI feedback draft, tests (unit, integration and Playwright end-to-end) and CI run with one `docker compose up`. Open http://localhost:8080 and log in with a demo account.
 
 ## Links
 
@@ -19,6 +19,8 @@ Unison is an LMS for one institute, built around group assignments. Administrato
 | API description, OpenAPI 3 (MS-3) | [docs/openapi.yaml](docs/openapi.yaml) |
 | API guide and every endpoint (MS-3) | [docs/api/README.md](docs/api/README.md), [docs/api/ENDPOINTS.md](docs/api/ENDPOINTS.md) |
 | Keys, Google sign-in and running on a real server | [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) |
+| AI evaluation set and how to run it (MS-5) | [backend/evaluation/ai_cases.json](backend/evaluation/ai_cases.json), [backend/scripts/evaluate_ai.py](backend/scripts/evaluate_ai.py) |
+| End-to-end tests (MS-5) | [e2e/](e2e/) |
 
 ## Main features
 
@@ -43,7 +45,7 @@ All deadlines are in IST (Asia/Kolkata).
 | Background work | Worker container using MySQL as its job queue (email outbox, deadlines, invitation expiry, AI jobs, account deletion) |
 | Email | SMTP via a transactional outbox; Mailpit for local development |
 | AI | Gemini API or a local model through Ollama (both optional) |
-| Testing and CI | pytest with coverage against MySQL, Ruff, Vitest with coverage, ESLint, GitHub Actions |
+| Testing and CI | pytest with coverage against MySQL, Ruff, Vitest with coverage, ESLint, Playwright end-to-end tests, GitHub Actions |
 | Packaging | Docker Compose: `db`, `init`, `backend`, `worker`, `frontend`, `mailpit`, `phpmyadmin` |
 
 ## How to run
@@ -91,6 +93,8 @@ Google sign-in and the AI feature are optional. Without their keys the site runs
 | `backend/app/seed/` | The synthetic dataset |
 | `backend/alembic/` | Database migrations |
 | `backend/tests/` | pytest tests (run against MySQL) |
+| `backend/evaluation/`, `backend/scripts/evaluate_ai.py` | The AI evaluation set (26 cases) and the script that runs it |
+| `e2e/` | Playwright end-to-end tests against the whole stack |
 | `frontend/src/pages/` | One folder per area: public pages, dashboards, courses, teams, reviews, notifications, profile, admin |
 | `frontend/src/components/` | Shared components that reproduce the Figma design (`/dev/components` shows them all) |
 | `frontend/src/api/` | The API client (`client.js`) and the `useApi` hook every page uses |
@@ -100,7 +104,7 @@ Google sign-in and the AI feature are optional. Without their keys the site runs
 | `db/init/` | Creates the `unison_test` database on first start |
 | `docker-compose.prod.yml`, `deploy/Caddyfile` | Production add-on: HTTPS with Caddy, only ports 80 and 443 open |
 | `.env.example` | Every private setting (keys, passwords); copy to `.env`, which Git ignores |
-| `.github/workflows/ci.yml` | CI: backend and frontend lint and tests with coverage, migrations, OpenAPI check, full compose start |
+| `.github/workflows/ci.yml` | CI: backend and frontend lint and tests with coverage, migrations, OpenAPI check, AI evaluation (offline), full compose start and Playwright tests |
 
 ## Development
 
@@ -124,6 +128,17 @@ Frontend (from `frontend/`, with Node 22): `npm run dev` serves the app on http:
     npm run lint
     npm test                    # Vitest, in a simulated browser
     npx vitest run --coverage   # coverage report in frontend/coverage/index.html
+
+End-to-end tests (from `e2e/`, with Node 22, while `docker compose up` is running; set `AI_PROVIDER=fake` in `.env` so the AI step works without a key):
+
+    npm ci
+    npx playwright install chromium
+    npx playwright test         # sign up and join a course, submit and review with an AI draft, access control
+
+AI evaluation (26 cases: quality, prompt injection, privacy, robustness). Offline it runs in CI with the fake model; with a real key in `.env` (`AI_PROVIDER=gemini`) it asks Gemini and checks the suggested marks:
+
+    docker compose exec -T backend python scripts/evaluate_ai.py
+    docker compose exec -T backend python scripts/evaluate_ai.py --live --markdown > docs/ai_evaluation_results.md
 
 After changing a route or schema, regenerate the API description (see [the API guide](docs/api/README.md#updating-the-yaml)) and commit `docs/openapi.yaml` and `docs/api/ENDPOINTS.md`.
 

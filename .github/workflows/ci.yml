@@ -114,6 +114,9 @@ jobs:
   compose:
     runs-on: ubuntu-latest
     needs: [backend, frontend]
+    env:
+      # The AI feedback draft uses the built-in fake model, so CI never calls Gemini or spends quota.
+      AI_PROVIDER: fake
     steps:
       - uses: actions/checkout@v6
       - name: Start the stack from a fresh clone
@@ -138,6 +141,26 @@ jobs:
             sleep 2
           done
           grep -q phpMyAdmin pma.html
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: e2e/package-lock.json
+      - name: End-to-end tests (Playwright)
+        working-directory: e2e
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+          npx playwright test
+      - name: Upload the Playwright report
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: playwright-report
+          path: |
+            e2e/playwright-report
+            e2e/test-results
+          if-no-files-found: ignore
       - name: Show service status and logs
         if: always()
         run: |
