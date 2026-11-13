@@ -66,10 +66,23 @@ def leftovers(text: str, ids: dict[str, str]) -> list[str]:
 INJECTION_HINTS = re.compile(
     r"ignore (all |any |the )?(previous |above |prior )?(instructions|rubric|rules)|"
     r"(give|award) (me |us |this )?(full|maximum|max|perfect) (marks|points|score)|"
-    r"you are now|system prompt|disregard (the|all|any)|as an ai",
-    re.IGNORECASE,
+    r"you are now|system prompt|disregard (the|all|any)|as an ai|"
+    # Pretending to end the report, or to be the system or the teacher.
+    r"</?\s*report\s*>|^\s*(system|assistant)\s*:|"
+    r"note (from|by) the (teacher|instructor|grader|examiner)|"
+    # Dictating the marks: "return 15, 20 and 15", or a ready-made answer in the reply format.
+    r"\b(return|award|give)\s+\d+(\.\d+)?\s*(,|and)\s*\d+|\"criterion_id\"\s*:",
+    re.IGNORECASE | re.MULTILINE,
 )
+
+# The report is sent between <report> and </report>; a report must not be able to close
+# that block early and write text that looks like it comes from outside the report.
+REPORT_TAG = re.compile(r"</?\s*report\s*>", re.IGNORECASE)
 
 
 def looks_like_injection(text: str) -> bool:
     return bool(INJECTION_HINTS.search(text))
+
+
+def neutralise_tags(text: str) -> str:
+    return REPORT_TAG.sub("[tag removed]", text)
